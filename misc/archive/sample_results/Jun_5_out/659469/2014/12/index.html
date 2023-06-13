@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=1WaXNDFE" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("http://web.archive.org/web");
+  __wm.wombat("http://www.apploi.com/","20141225205341","http://web.archive.org/","web","/_static/",
+	      "1419540821");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+
+    <script type="text/javascript">
+    <!-- 
+            if (screen.width <= 699) {document.location = "http://web.archive.org/web/20141225205341/http://m.apploi.com";}
+             //-->
+</script>
+
+<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UgQBUlZaGwcBVFJSBQM="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),u=c.length,f=i(a,o,r),d=0;u>d;d++)c[d].apply(f,n);return f}function a(t,e){u[t]=s(t).concat(e)}function s(t){return u[t]||[]}function c(){return n(e)}var u={};return{on:a,emit:e,create:c,listeners:s,_events:u}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(u){try{r("ierr",[u,(new Date).getTime(),!0])}catch(f){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(4),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(u){"stack"in u&&(t(5),t(3),"addEventListener"in window&&t(1),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(2),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:4,2:7,3:5,4:18,5:6,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:18,2:19,ee:"QJf3ax",gos:"7eSDFh"}],5:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:19,2:18,ee:"QJf3ax"}],6:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:19,2:18,ee:"QJf3ax"}],7:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),u=s(a),f=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new f(t);try{i.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=f.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:4,2:19,ee:"QJf3ax"}],8:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,u="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(u);if(f&&(r.rxSize=f),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,u=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var u=e(o);u&&(r.txSize=u)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var f=0;c>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:9,3:7,4:4,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],9:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){p.proto="https"===d.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=p.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,c=s.document,u="addEventListener",f="attachEvent",d=(""+location).split("?")[0],p=e.exports={offset:i(),origin:d,features:{}};c[u]?(c[u]("DOMContentLoaded",o,!1),s[u]("load",n,!1)):(c[f]("onreadystatechange",r),s[f]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],18:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],19:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,u;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){f([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return u=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,u],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,u(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,u="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,u?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){f([o,e,n,r])}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){f([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function f(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:18,ee:"QJf3ax"}]},{},["G9z0Bl",3,8]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search and Apply for Jobs in Seconds - Apploi</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://www.apploi.com/xmlrpc.php">
+<link href="http://web.archive.org/web/20141225205341cs_/http://fonts.googleapis.com/css?family=Raleway:500,400,600,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://web.archive.org/web/20141225205341cs_/http://www.apploi.com/wp-content/themes/apploi/css/simplegrid.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="http://web.archive.org/web/20141225205341cs_/http://flexslider.woothemes.com/css/flexslider.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="http://web.archive.org/web/20141225205341cs_/http://www.jacklmoore.com/colorbox/example1/colorbox.css" type="text/css" media="screen"/>
+<link href="//web.archive.org/web/20141225205341cs_/http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!--
+        <link rel="stylesheet" href="http://www.apploi.com/wp-content/themes/apploi/css/flexslider.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="http://www.apploi.com/wp-content/themes/apploi/css/colorbox.css" type="text/css" media="screen" />
+-->
+
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.5.4.2 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Apploi lets you search and apply for jobs in just a few clicks. Get your next job and start a new career. Immediate openings. Apply for jobs today."/>
+<link rel="canonical" href="http://web.archive.org/web/20141225205341/http://www.apploi.com/"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Search and Apply for Jobs in Seconds - Apploi"/>
+<meta property="og:description" content="Apploi lets you search and apply for jobs in just a few clicks. Get your next job and start a new career. Immediate openings. Apply for jobs today."/>
+<meta property="og:url" content="http://web.archive.org/web/20141225205341/http://www.apploi.com/"/>
+<meta property="og:site_name" content="Apploi Online"/>
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Apploi Online » Feed" href="http://web.archive.org/web/20141225205341/http://www.apploi.com/feed/"/>
+<link rel="alternate" type="application/rss+xml" title="Apploi Online » Comments Feed" href="http://web.archive.org/web/20141225205341/http://www.apploi.com/comments/feed/"/>
+<link rel="alternate" type="text/calendar" title="Apploi Online » iCal Feed" href="http://web.archive.org/web/20141225205341/http://www.apploi.com/events/?ical=1"/>
+<link rel="stylesheet" id="yarppWidgetCss-css" href="http://web.archive.org/web/20141225205341cs_/http://www.apploi.com/wp-content/plugins/yet-another-related-posts-plugin/style/widget.css?ver=4.0" type="text/css" media="all"/>
+<link rel="stylesheet" id="jetpack-subscriptions-css" href="http://web.archive.org/web/20141225205341cs_/http://www.apploi.com/wp-content/plugins/jetpack/modules/subscriptions/subscriptions.css?ver=4.0" type="text/css" media="all"/>
+<link rel="stylesheet" id="DOPTG_JScrollPaneStyle-css" href="http://web.archive.org/web/20141225205341cs_/http://www.apploi.com/wp-content/plugins/doptg/libraries/gui/css/jquery.jscrollpane.css?ver=4.0" type="text/css" media="all"/>
+<link rel="stylesheet" id="DOPTG_ThumbnailGalleryStyle-css" href="http://web.archive.org/web/20141225205341cs_/http://www.apploi.com/wp-content/plugins/doptg/assets/gui/css/jquery.dop.ThumbnailGallery.css?ver=4.0" type="text/css" media="all"/>
+<link rel="stylesheet" id="faq-style-css" href="http://web.archive.org/web/20141225205341cs_/http://www.apploi.com/wp-content/plugins/spider-faq/elements/style.css?ver=4.0" type="text/css" media="all"/>
+<link rel="stylesheet" id="jetpack-widgets-css" href="http://web.archive.org/web/20141225205341cs_/http://www.apploi.com/wp-content/plugins/jetpack/modules/widgets/widgets.css?ver=20121003" type="text/css" media="all"/>
+<link rel="stylesheet" id="apploi-style-css" href="http://web.archive.org/web/20141225205341cs_/http://www.apploi.com/wp-content/themes/apploi/style.css?ver=4.0" type="text/css" media="all"/>
+<script type="text/javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-includes/js/jquery/jquery.js?ver=1.11.1"></script>
+<script type="text/javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script>
+<script type="text/javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/plugins/spider-faq/elements/jquery.scrollTo.js?ver=4.0"></script>
+<script type="text/javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/plugins/spider-faq/elements/loewy_blog.js?ver=4.0"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.apploi.com/xmlrpc.php?rsd"/>
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.apploi.com/wp-includes/wlwmanifest.xml"/> 
+<meta name="generator" content="WordPress 4.0"/>
+<link rel="shortlink" href="http://web.archive.org/web/20141225205341/http://wp.me/P4Ld9A-S"/>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-39283247-7']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'http://web.archive.org/web/20141225205341/https://ssl' : 'http://web.archive.org/web/20141225205341/http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<link rel="https://github.com/WP-API/WP-API" href="http://www.apploi.com/wp-json"/>
+<style type="text/css">img#wpstats{display:none}</style><!-- All in one Favicon 4.3 --><link rel="shortcut icon" href="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/06/0538956a742643b18fefa7bd0699622f.ico"/>
+		<link rel="stylesheet" id="custom-css-css" type="text/css" href="http://web.archive.org/web/20141225205341cs_/http://www.apploi.com/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=12"/>
+		
+<script src="http://web.archive.org/web/20141225205341js_/http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+        <!-- optionally include helper plugins -->
+         <script type="text/javascript" language="javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/jquery.mask.js"></script>
+        <script type="text/javascript" language="javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/helper-plugins/jquery.mousewheel.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/helper-plugins/jquery.touchSwipe.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/helper-plugins/jquery.transit.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/helper-plugins/jquery.ba-throttle-debounce.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/jquery.flexslider-min.js"></script>
+
+ <script type="text/javascript" language="javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/jquery.colorbox-min.js"></script>
+
+ <script type="text/javascript" language="javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/clamp.js"></script>
+ <script type="text/javascript" language="javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/wait.js"></script>
+  <script type="text/javascript" language="javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/pretty.js"></script>
+
+
+ <script type="text/javascript" language="javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/custom.js"></script>
+
+<script>
+jQuery( document ).ready(function() {
+    jQuery( "#sendsms" ).click(function() {
+                        var num = jQuery.trim(jQuery('.phone_us').val());
+
+                        if (num.length < 11){
+                            alert('Invalid Phone Number');
+                            return;
+                        }
+
+
+
+                        console.log(num);
+                        jQuery.ajax({
+                            url: "http://web.archive.org/web/20141225205341/http://www.apploi.com/wp-content/themes/apploi/sms.php",
+                            type:'GET',
+                            data: 'num=' + num
+                            })
+  .done(function( msg ) {
+    alert( msg );
+                        });
+});
+});
+</script>
+    <script>
+    window['friendbuy'] = window['friendbuy'] || [];
+    window['friendbuy'].push(['site', 'site-4f57399c-www.apploi.com']);
+    window['friendbuy'].push(['track', 'customer',
+    {
+    //id: 'CUSTOMER_ID', REPLACE WITH YOUR CUSTOMER ID
+    //email: 'email@example.com' REPLACE WITH YOUR CUSTOMER'S EMAIL ADDRESS
+    }
+    ]);
+    (function (f, r, n, d, b, y) {
+    b = f.createElement(r), y = f.getElementsByTagName(r)[0];b.async = 1;b.src = n;y.parentNode.insertBefore(b, y);
+    })(document, 'script', '//web.archive.org/web/20141225205341/http://djnf6e5yyirys.cloudfront.net/js/friendbuy.min.js');
+    </script>
+                            
+</head>
+
+<body class="home page page-id-54 page-template page-template-page-home-php group-blog tribe-theme-apploi">
+<div id="page" class="hfeed site">
+
+
+    <style>
+    body{display:none;}
+    
+    #site-navigation{z-index: 999999;}
+    #s1{background-image:url(http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/new_bg.jpg);width: 100%;}
+    .s1-content{background-color: #009500;text-align: center;position: absolute;width:100%;font-size: 28px;bottom: 0px;padding: 30px;color: white;}
+    .slide{background-size:cover;}
+    .iconz{text-align: center;bottom: 150px;position: absolute;margin: auto;width: 33.333%;}
+    .iconz img{margin:0px 15px;}
+    ul#menu-main-menu li{font-size: 16px;}
+#s1-content {
+margin-top: 80px;margin-left:30px;width: 670px;
+}
+ #s1-content    h1 {
+font-size: 50px!important;
+color: white;
+font-family: 'Museo-300';
+font-weight: 500;
+}
+#s1-content #s1-text {
+font-family: 'Museo-300';
+font-weight: 300;
+font-size: 22px;
+color: white;
+}
+    
+</style>
+
+<div id="fullpage">
+    <div class="section" id="section0">
+        <div class="slide" id="s1">
+
+<div class="wrap">
+    
+            <div id="s1-content">
+            <h1>Welcome to Apploi!</h1>
+            <div id="s1-text">
+                Apploi is a community for job seekers and employers.<br>
+                Job seekers can easily find and apply to jobs, get advice, tips, and training, and benefit from our community. <br><br>
+
+                 Employers in turn can easily reach jobseekers on their computers and mobile devices, as well as via our network of kiosks.<br><br>
+
+                With Apploi employers see personality – not just a piece of paper.
+
+                <div style="margin-top:40px;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploicorp.com/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/empbut.png" alt=""></a><a style="margin-left:20px;" href="#" class="down"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/seekerbut.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+        
+</div>
+
+
+
+       
+       
+        </div>
+          <!--<div class="slide" id="s2">
+            
+         <div class="iconz">
+            <img src="http://www.apploi.com/wp-content/themes/apploi/img/Apploi-icon.png" alt="">
+            <img src="http://www.apploi.com/wp-content/themes/apploi/img/head-icon_enlarge.png" alt="">
+            <img src="http://www.apploi.com/wp-content/themes/apploi/img/speech-icon.png" alt="">
+        </div>    
+        <div class="s2-content">
+            Show more of your personality with interactive questionaires set by employers.
+            <div class="down">Scroll Down</div>
+        </div>
+        </div>
+
+        <div class="slide" id="s3">
+             <div class="iconz">
+            <img src="http://www.apploi.com/wp-content/themes/apploi/img/Apploi-icon.png" alt="">
+            <img src="http://www.apploi.com/wp-content/themes/apploi/img/head-icon.png" alt="">
+            <img src="http://www.apploi.com/wp-content/themes/apploi/img/speech-icon_enlarge.png" alt="">
+        </div>
+            <div class="s3-content">
+            Get advice & chat with the Apploi community.
+            <div class="down">Scroll Down</div>
+        </div>
+        </div>
+      <div class="slide" id="s4">
+             <div class="iconz">
+            <img src="http://www.apploi.com/wp-content/themes/apploi/img/Apploi-icon.png" alt="">
+            <img src="http://www.apploi.com/wp-content/themes/apploi/img/head-icon.png" alt="">
+            <img src="http://www.apploi.com/wp-content/themes/apploi/img/speech-icon.png" alt="">
+            <img src="http://www.apploi.com/wp-content/themes/apploi/img/search-icon_enlarge.png" alt="">
+        </div>
+            <div class="s4-content">
+            Search our site to find what you need.
+            <div class="down">Scroll Down</div>
+        </div>
+        </div> -->
+    </div>
+</div>
+
+<script>
+    
+    $(function() {
+ 
+ $('#fullpage').fullpage({
+                    
+                    autoScrolling: false,
+                    css3: true
+                });
+ 
+    // grab the initial top offset of the navigation 
+    var sticky_navigation_offset_top = $(window).height();
+     
+    // our function that decides weather the navigation bar should have "fixed" css position or not.
+    var sticky_navigation = function(){
+        var scroll_top = $(window).scrollTop(); // our current vertical position from the top
+         $('#site-navigation').css({ 'position': 'fixed', 'top':0, 'left':0 }); 
+    };
+    var vis = function(){
+        var scroll_top = $(window).scrollTop(); // our current vertical position from the top
+         
+        var viz = $(window).height() - $(window).scrollTop();
+        
+        $('.s1-content').css({ 'opacity': viz/$(window).height() }); 
+        $('.s2-content').css({ 'opacity': viz/$(window).height() }); 
+        $('.s3-content').css({ 'opacity': viz/$(window).height() }); 
+        $('.s4-content').css({ 'opacity': viz/$(window).height() }); 
+    };
+     
+    // run our function on load
+    sticky_navigation();
+
+   
+     
+    // and run it again every time you scroll
+    $(window).scroll(function() {
+         sticky_navigation();
+         vis();
+    });
+
+        $('.down').on('click', function(e) {       
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop: $(window).height()
+        }, 500);
+    });
+ 
+});
+
+
+
+var tid = setTimeout(mycode, 5000);
+function mycode() {
+  $('.fp-next').click();
+  tid = setTimeout(mycode, 5000); // repeat myself
+}
+
+
+
+</script>
+<style>
+    body{display:block;}
+</style>
+
+
+
+
+    <header id="masthead" class="site-header" role="banner">
+        <div class="site-branding" style="display:none;">
+            <div class="wrap">
+                    
+
+
+
+            </div>
+        </div>
+
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <div class="wrap">
+            <a id="applogo" href="http://web.archive.org/web/20141225205341/http://www.apploi.com/" rel="home"><img id="logo" src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/logo.png"></a>
+
+
+
+            <div class="menu-main-menu-container"><ul id="menu-main-menu" class="menu"><li id="menu-item-4445" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-4445"><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/">Home</a></li>
+<li id="menu-item-3143" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3143"><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/observer/">Advice</a></li>
+<li id="menu-item-2900" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2900"><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/companies/">Companies</a></li>
+<li id="menu-item-3144" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3144"><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/">Jobs</a></li>
+<li id="menu-item-2914" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2914"><a target="_blank" href="http://web.archive.org/web/20141225205341/http://www.apploicorp.com/">Employers</a></li>
+<li id="menu-item-106" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-106"><a href="#">Sign In</a></li>
+</ul></div>            <div id="social-menu">
+            <ul>
+                <li><a id="search" href="#"></a>
+
+<div id="searchform" style="display:none;">
+        <form action="http://web.archive.org/web/20141225205341/http://www.apploi.com/" method="get">
+          <fieldset id="inputs">
+            <input id="username" name="s" placeholder="Search" required autocomplete="off">   
+          </fieldset>
+          <fieldset id="actions">
+            <input type="submit" id="submit" value="Search">
+         </fieldset>
+        </form>
+      </div>
+
+                </li>    
+                <li><a target="_blank" id="fb" href="http://web.archive.org/web/20141225205341/https://www.facebook.com/apploi?fref=ts"></a></li> 
+                <li><a target="_blank" id="twitter" href="http://web.archive.org/web/20141225205341/http://www.twitter.com/apploi"></a></li> 
+                <li><a target="_blank" id="googleplus" href="http://web.archive.org/web/20141225205341/https://plus.google.com/u/0/103704947696128565260/posts"></a></li> 
+                <li><a target="_blank" id="instagram" href="http://web.archive.org/web/20141225205341/http://instagram.com/apploi_"></a></li> 
+                <li><a target="_blank" id="youtube" href="http://web.archive.org/web/20141225205341/https://www.youtube.com/TheApploi"></a></li> 
+
+            </ul>    
+                
+            </div>
+            
+            </div>
+            
+        </nav><!-- #site-navigation -->
+    </header><!-- #masthead -->
+
+
+
+                    
+
+
+
+    <div id="content" class="site-content">
+    <div class="wrap" id="contentwrap">
+
+
+
+
+</div>
+
+
+<div id="banner-top">
+  <div class="wrap" style="position: relative;">
+
+<div style="width:120px;padding-top: 20px;">
+
+<a href="http://web.archive.org/web/20141225205341/https://itunes.apple.com/us/app/apploi-job-search-find-jobs/id615880658?mt=8" target="_blank"><img id="appstore" src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/appstore.png"></a><br>
+<a href="http://web.archive.org/web/20141225205341/https://play.google.com/store/apps/details?id=com.apploi" target="_blank"><img id="playstore" src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/googleplay.png"></a>
+</div>
+<div style="width: 373px;line-height: 137px;font-size: 25px;color: #F16239;">Download the Apploi app today.</div>
+<div style="height:137px;line-height:137px;">
+	            <div id="textme">
+                
+                <input style="width: 160px;" type="text" class="phone_us" placeholder="My Cell Number">
+                <a><img id="sendsms" src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/text.png" alt=""></a>
+            </div>
+
+</div>
+<div style="height:137px;line-height:137px;">
+	<img style="height: 90px;margin-top: 15px;margin-left: 10px;" src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/phone-circle.png" alt="">
+</div>
+<div style="height:137px;line-height:137px;">
+	<img style="height: 90px;margin-top: 15px;" src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/tabby.png" alt="">
+</div>
+
+
+      </div>
+</div>
+  <div class="wrap">
+
+<div id="featuredbanner-top">
+<div id="slider-container" class="topslider onefifty">
+ <div id="slider" class="flexslider">
+
+        <ul class="slides">
+                 <li style="position:relative;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/apploi-welcomes-launch-job-one-hillary-clinton-2014-cgi-america-meeting/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/09/screenshot-2014-06-24-17-48-29-1024x272.png"/></a>
+
+                    <div class="top-caption">Apploi Welcomes the Launch of Job One by Hillary Clinton at the 2014 CGI America Meeting 
+                    <div class="top-social">
+                      <a href="#a3852" class="a3852"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/top-email.png" alt=""></a>
+                      <a href="javascript:twit('http://web.archive.org/web/20141225205341/http://www.apploi.com/apploi-welcomes-launch-job-one-hillary-clinton-2014-cgi-america-meeting/','Apploi Welcomes the Launch of Job One by Hillary Clinton at the 2014 CGI America Meeting' );"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/twitter.png" alt=""></a>
+                      <a href="javascript:fbShare('http://web.archive.org/web/20141225205341/http://www.apploi.com/apploi-welcomes-launch-job-one-hillary-clinton-2014-cgi-america-meeting/', 'Fb Share', 'Facebook share popup', 'http://web.archive.org/web/20141225205341/http://www.apploi.com/wp-content/uploads/2014/09/screenshot-2014-06-24-17-48-29.png', 520, 350)"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/fb2.png" alt=""></a>
+
+                    </div>
+                    </div>
+
+                        <!-- This contains the hidden content for inline calls -->
+                        <div style="display:none">
+                          <div id="a3852" style="padding:10px; background:#fff;" class="emailbox">
+<script>
+                            jQuery( document ).ready(function() {
+                        jQuery( " #a3852 .sender" ).click(function() {
+                        var email = jQuery.trim(jQuery('#a3852  .ebox input').val());
+                        var title= "Apploi+Welcomes+the+Launch+of+Job+One+by+Hillary+Clinton+at+the+2014+CGI+America+Meeting";
+                        var permalink = "http://web.archive.org/web/20141225205341/http://www.apploi.com/apploi-welcomes-launch-job-one-hillary-clinton-2014-cgi-america-meeting/";;
+                    
+                        jQuery.ajax({
+                            url: "http://web.archive.org/web/20141225205341/http://www.apploi.com/wp-content/themes/apploi/inc/emailer.php",  
+                            type:'GET',  
+                            data: 'email=' + email + '&title=' +  title + '&permalink='+ permalink
+                            });
+                          jQuery().colorbox.close();
+});
+});
+</script>
+                          <h2><strong>Share This Article</strong></h2>
+                          <div class="ebox"><input type="text" placeholder="Enter email address"></div>
+<div class="emailer">
+                    <a href="#"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/09/screenshot-2014-06-24-17-48-29-200x200.png"/></a>
+                    <div class="contleft">
+                    <span class="bts-title">Apploi Welcomes the Launch of Job One by Hillary Clinton at the 2014 CGI America Meeting</span>
+                    <span>The responsibility to give every American youth the ability to access jobs is fundamental and felt here at Apploi, every day. We therefore welcomed the news that in this year’s Clinton Global Initiative America meeting, Secretary Hillary Rodham Clinton announced Job One &#8211; which is focused on improving job access for youth in the United States. [&hellip;]<br><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/apploi-welcomes-launch-job-one-hillary-clinton-2014-cgi-america-meeting/">Read More.. </a></span>
+                    </div>
+
+
+
+</div>
+                  
+<div class="control">
+  <a href="#" class="sender">Send</a> <a href="#" class="closer"> Cancel</a>
+
+</div>
+                             </div>
+                        </div>
+                        <script>
+$(document).ready(function(){
+  $(".a3852").colorbox({inline:true, width:"800px"});
+
+ $('.closer').click(function(){
+     $.colorbox.close();
+     return false;
+ });
+
+
+  });
+                        </script>
+                </li>
+
+                 <li style="position:relative;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/million4christmas"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/08/m4x-web-banner-1024x272.jpg"/></a>
+
+                    <div class="top-caption">#Million4Christmas 
+                    <div class="top-social">
+                      <a href="#a3628" class="a3628"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/top-email.png" alt=""></a>
+                      <a href="javascript:twit('http://web.archive.org/web/20141225205341/http://www.apploi.com/million4christmas','#Million4Christmas' );"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/twitter.png" alt=""></a>
+                      <a href="javascript:fbShare('http://web.archive.org/web/20141225205341/http://www.apploi.com/million4christmas', 'Fb Share', 'Facebook share popup', 'http://web.archive.org/web/20141225205341/http://www.apploi.com/wp-content/uploads/2014/08/m4x-web-banner.jpg', 520, 350)"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/fb2.png" alt=""></a>
+
+                    </div>
+                    </div>
+
+                        <!-- This contains the hidden content for inline calls -->
+                        <div style="display:none">
+                          <div id="a3628" style="padding:10px; background:#fff;" class="emailbox">
+<script>
+                            jQuery( document ).ready(function() {
+                        jQuery( " #a3628 .sender" ).click(function() {
+                        var email = jQuery.trim(jQuery('#a3628  .ebox input').val());
+                        var title= "%23Million4Christmas";
+                        var permalink = "http://web.archive.org/web/20141225205341/http://www.apploi.com/m4x/";;
+                    
+                        jQuery.ajax({
+                            url: "http://web.archive.org/web/20141225205341/http://www.apploi.com/wp-content/themes/apploi/inc/emailer.php",  
+                            type:'GET',  
+                            data: 'email=' + email + '&title=' +  title + '&permalink='+ permalink
+                            });
+                          jQuery().colorbox.close();
+});
+});
+</script>
+                          <h2><strong>Share This Article</strong></h2>
+                          <div class="ebox"><input type="text" placeholder="Enter email address"></div>
+<div class="emailer">
+                    <a href="#"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/08/m4x-web-banner-200x200.jpg"/></a>
+                    <div class="contleft">
+                    <span class="bts-title">#Million4Christmas</span>
+                    <span><br><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/million4christmas">Read More.. </a></span>
+                    </div>
+
+
+
+</div>
+                  
+<div class="control">
+  <a href="#" class="sender">Send</a> <a href="#" class="closer"> Cancel</a>
+
+</div>
+                             </div>
+                        </div>
+                        <script>
+$(document).ready(function(){
+  $(".a3628").colorbox({inline:true, width:"800px"});
+
+ $('.closer').click(function(){
+     $.colorbox.close();
+     return false;
+ });
+
+
+  });
+                        </script>
+                </li>
+
+                 <li style="position:relative;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/white-house/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/07/ApploiOnlineModified_WhiteHouseBannerPlacement-1024x272.png"/></a>
+
+                    <div class="top-caption">APPLOI IN WHITE HOUSE REPORT &#8211; AS AN AMERICAN INNOVATOR 
+                    <div class="top-social">
+                      <a href="#a3549" class="a3549"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/top-email.png" alt=""></a>
+                      <a href="javascript:twit('http://web.archive.org/web/20141225205341/http://www.apploi.com/white-house/','APPLOI IN WHITE HOUSE REPORT – AS AN AMERICAN INNOVATOR' );"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/twitter.png" alt=""></a>
+                      <a href="javascript:fbShare('http://web.archive.org/web/20141225205341/http://www.apploi.com/white-house/', 'Fb Share', 'Facebook share popup', 'http://web.archive.org/web/20141225205341/http://www.apploi.com/wp-content/uploads/2014/07/ApploiOnlineModified_WhiteHouseBannerPlacement.png', 520, 350)"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/fb2.png" alt=""></a>
+
+                    </div>
+                    </div>
+
+                        <!-- This contains the hidden content for inline calls -->
+                        <div style="display:none">
+                          <div id="a3549" style="padding:10px; background:#fff;" class="emailbox">
+<script>
+                            jQuery( document ).ready(function() {
+                        jQuery( " #a3549 .sender" ).click(function() {
+                        var email = jQuery.trim(jQuery('#a3549  .ebox input').val());
+                        var title= "APPLOI+IN+WHITE+HOUSE+REPORT+%26%238211%3B+AS+AN+AMERICAN+INNOVATOR";
+                        var permalink = "http://web.archive.org/web/20141225205341/http://www.apploi.com/white-house/";;
+                    
+                        jQuery.ajax({
+                            url: "http://web.archive.org/web/20141225205341/http://www.apploi.com/wp-content/themes/apploi/inc/emailer.php",  
+                            type:'GET',  
+                            data: 'email=' + email + '&title=' +  title + '&permalink='+ permalink
+                            });
+                          jQuery().colorbox.close();
+});
+});
+</script>
+                          <h2><strong>Share This Article</strong></h2>
+                          <div class="ebox"><input type="text" placeholder="Enter email address"></div>
+<div class="emailer">
+                    <a href="#"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/07/ApploiOnlineModified_WhiteHouseBannerPlacement-200x200.png"/></a>
+                    <div class="contleft">
+                    <span class="bts-title">APPLOI IN WHITE HOUSE REPORT &#8211; AS AN AMERICAN INNOVATOR</span>
+                    <span>APPLOI TOOL HIGHLIGHTED IN WHITE HOUSE REPORT RELEASED TODAY WITH PRESIDENT OBAMA AND VICE PRESIDENT JOE BIDEN Screen Shot 2014-07-22 at 12.47.58 PM Today at the White House, in a report released with President Obama and Vice-President Biden, Apploi’s tool providing jobseekers with real-time data on local employer needs, and how and where they can [&hellip;]<br><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/white-house/">Read More.. </a></span>
+                    </div>
+
+
+
+</div>
+                  
+<div class="control">
+  <a href="#" class="sender">Send</a> <a href="#" class="closer"> Cancel</a>
+
+</div>
+                             </div>
+                        </div>
+                        <script>
+$(document).ready(function(){
+  $(".a3549").colorbox({inline:true, width:"800px"});
+
+ $('.closer').click(function(){
+     $.colorbox.close();
+     return false;
+ });
+
+
+  });
+                        </script>
+                </li>
+
+
+        </ul>
+       
+    </div>
+</div>
+<script>
+           
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide",controlNav: false
+  });
+});
+
+
+</script>
+
+
+
+
+</div>
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+
+            <h2><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/titles/editorspick.png"></h2>
+<div id="slider-container" class="articles-slider onefifty">
+ <div id="a-prev" class="prev button"><i class="fa fa-angle-left fa-4"></i></div>
+ <div id="articles-slider" class="list_carousel">
+
+        <ul class="slides">
+                 <li style="width:200px;height: 150px;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/seasonal-job-not-fulltime/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/10/Facebook_Banner1-200x150.png"/>
+                    <span>4 Things To Do If Your Seasonal Job Doesn’t Become Full-Time</span></a>
+                </li>
+
+                 <li style="width:200px;height: 150px;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/tis-season-santa-find-new-job/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/12/tis-the-season-for-santa-to-find-200x150.jpg"/>
+                    <span>&#8216;Tis the Season&#8230; For Santa to Find a New Job</span></a>
+                </li>
+
+                 <li style="width:200px;height: 150px;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/job-search-holidays/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/12/Relax-2-Wallpaper-1920X1200-200x150.jpg"/>
+                    <span>3 Key Ways To Job Search During The Holidays&#8230;While Relaxing</span></a>
+                </li>
+
+                 <li style="width:200px;height: 150px;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/how-to-keep-retail-jobs-after-season/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-16-at-11.25.01-AM-200x150.png"/>
+                    <span>The Secret To Keeping Your Retail Job After The Season</span></a>
+                </li>
+
+                 <li style="width:200px;height: 150px;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/tuckers-tips-fired/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/12/tuckers_tips2-200x150.jpg"/>
+                    <span>Tucker&#8217;s Tips: Why Were You Fired?</span></a>
+                </li>
+
+                 <li style="width:200px;height: 150px;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/top-jobseeking-advice-from-recruiters/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/12/Screen-shot-2014-12-12-at-11.19.25-AM-200x150.png"/>
+                    <span>Top Advice from Recruiters and Government Officials for Jobseekers</span></a>
+                </li>
+
+                 <li style="width:200px;height: 150px;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/4-things-must-do-after-applying-job/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/12/Black__White_Handshake_-_Still_from_the_film_Colour_Blind_2009-200x150.jpg"/>
+                    <span>4 Things You Must Do After Applying For A Job</span></a>
+                </li>
+
+                 <li style="width:200px;height: 150px;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/tuckers-tips-phone-interview/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/12/tuckers_tips2-200x150.jpg"/>
+                    <span>Tucker&#8217;s Tips: How to Prepare for a Phone Interview</span></a>
+                </li>
+
+                 <li style="width:200px;height: 150px;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/4-things-before-apply-for-job/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/12/1107-jobsearchnewspaper-1-200x150.jpg"/>
+                    <span>4 Things You Must Do Before You Apply For A Job</span></a>
+                </li>
+
+                 <li style="width:200px;height: 150px;">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/follow-our-brands/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/11/Facebook_Banner11-200x150.png"/>
+                    <span>Here&#8217;s Why You Should Follow Companies Through Apploi</span></a>
+                </li>
+
+
+        </ul>
+       
+    </div>
+<div id="a-next" class="next button"><i class="fa fa-angle-right fa-4"></i></div>
+</div>
+<script>
+
+
+
+            
+$( document ).ready(function() {
+                $('#articles-slider .slides').carouFredSel({
+                    auto: false,
+                    items:3 ,
+                    prev: '#a-prev',
+                    next: '#a-next',
+                    width: '200',
+                    scroll : {
+            items           : 1,
+            duration        : 500,                         
+            pauseOnHover    : true
+        }    ,
+                    mousewheel: false,
+                    swipe: {
+                        onMouse: false,
+                        onTouch: true
+                    }
+                });
+});
+</script>     
+            
+            <div class="divider" style="margin: 10px 0 0px;"></div>
+
+            <h2><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/titles/jobsnearyou.png"></h2>
+<div id="slider-container" class="home-jobs">
+ <div id="j-prev" class="prev"><i class="fa fa-angle-left fa-4"></i></div>
+ <div id="jobs-slider" class="list_carousel">
+
+        <ul class="slides">
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=jcrew-24725"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/5a371ff3-a146-57ac-ea0e-04693c1cb246"/></div><span>Sales Associate: Fifth Avenue</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=uniqlo-10271"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/471cd590-c093-4af2-9831-84aaa4a0dd35"/></div><span>Sales, 34th Street</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=uniqlo-13176"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/471cd590-c093-4af2-9831-84aaa4a0dd35"/></div><span>Sales, Brooklyn</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=hm6-75674"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/4e579c17-1f36-410a-8343-355d94377394"/></div><span>Sales Advisor </span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=hallmark8-75749"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/a6fc3e71-4cbd-4461-e7a1-1df6fd717a6d"/></div><span>Corporate Store Sales Associate</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=aldo-73479"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/da6aee07-158c-4606-b953-143ecf4a8f69"/></div><span>Cashier</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=burlingtoncoatfactory4-71564"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/2297359b-3cd0-4a4c-8be3-05c879e4ab7a"/></div><span>Cashiers Associate</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=ballysportclub-18767"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/780b54e9-b521-4ba2-d837-4e03fb00ba91"/></div><span>Porter</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=hallmark9-75750"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/693cc080-823b-43e9-d7cc-d9ac97d5f539"/></div><span>Corporate Store Sales Associate</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=burlingtoncoatfactory4-71559"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/2297359b-3cd0-4a4c-8be3-05c879e4ab7a"/></div><span>Seasonal Cashier Associates</span></a>
+                </li>
+
+
+        </ul>
+       
+    </div>
+<div id="j-next" class="next"><i class="fa fa-angle-right fa-4"></i></div>
+</div>
+<script>
+                $('#jobs-slider .slides').carouFredSel({
+                    auto: false,
+                    items:6 ,
+                    prev: '#j-prev',
+                    next: '#j-next',
+                    scroll : {
+            items           : 1,
+            duration        : 500,                         
+            pauseOnHover    : true
+        }    ,
+                    mousewheel: false,
+                    swipe: {
+                        onMouse: false,
+                        onTouch: true
+                    }
+                });
+
+</script>     
+
+			 <div class="divider" style="margin: 10px 0 0px;"></div>
+
+
+             <h2><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/companyprofiles.png"></h2>
+<div id="slider-container" class="home-jobs">
+ <div id="c-prev" class="prev"><i class="fa fa-angle-left fa-4"></i></div>
+ <div id="comp-slider" class="list_carousel">
+
+        <ul class="slides">
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/companies/?company=2174"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/51542673-a7b4-55eb-e4c5-3931e0f9eda8"/></div><span>HMSHost</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/companies/?company=10183"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/10c82472-c132-5ccf-ae9b-803fa1fa91fd"/></div><span>Jos. A Bank</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/companies/?company=779"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/602e60ca-89ee-4945-bd36-8380a8bdd2e5"/></div><span>T-Mobile</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/companies/?company=3036"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/9c34289a-c339-5dac-c405-1dca13eb0cd9"/></div><span>U.S. Bank</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/companies/?company=1102"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/d41f29ae-4b22-5074-f62b-2aca601795c9"/></div><span>U-haul</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/companies/?company=979"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/2c45338e-ab83-5ce2-a793-76ac86e35454"/></div><span>Oakley</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/companies/?company=10243"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/3ecced09-fd5b-59b2-c532-bc1ca714c036"/></div><span>Pilot Flying J</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/companies/?company=4101"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/icons/5.png"/></div><span>AmeriPlan</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/companies/?company=8627"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/e31296ba-3c81-5cbc-990b-f3e12ae5b4d6"/></div><span>Red Robin</span></a>
+                </li>
+
+				 <li class="jobs-list">
+                    <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/companies/?company=951"><div class="img-box"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/app/api/file/66c17026-06b8-46e2-8406-7d2acc91f34a"/></div><span>OfficeTeam</span></a>
+                </li>
+
+
+        </ul>
+       
+    </div>
+<div id="c-next" class="next"><i class="fa fa-angle-right fa-4"></i></div>
+</div>
+<script>
+                $('#comp-slider .slides').carouFredSel({
+                    auto: false,
+                    items:6 ,
+                    prev: '#c-prev',
+                    next: '#c-next',
+                    scroll : {
+            items           : 1,
+            duration        : 500,                         
+            pauseOnHover    : true
+        }    ,
+                    mousewheel: false,
+                    swipe: {
+                        onMouse: false,
+                        onTouch: true
+                    }
+                });
+
+</script>
+     
+
+             <div class="divider" style="margin: 10px 0 0px;"></div>
+
+            <h2><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/titles/press.png"></h2>
+<div id="slider-container">
+<div id="press-slider" class="list_carousel">
+
+        <ul class="slides">
+				 <li>
+                    <a target="_blank" href="http://web.archive.org/web/20141225205341/http://apploicorp.com/apploi-jobs-kiosks-launched-in-new-york-state-job-and-re-entry-centers/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/09/Apploi_logo_green.png" alt="asd"/></a>
+                </li>
+
+				 <li>
+                    <a target="_blank" href="http://web.archive.org/web/20141225205341/http://fxn.ws/1y5rD8N"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/12/og-fb-foxbusiness1.jpg" alt="asd"/></a>
+                </li>
+
+				 <li>
+                    <a target="_blank" href="http://web.archive.org/web/20141225205341/http://www.13abc.com/story/26714036/tabby-awards-announce-apploi-as-finalist-for-ipad-business-products-and-services-award"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/10/abc13_logo.png" alt="asd"/></a>
+                </li>
+
+				 <li>
+                    <a target="_blank" href="http://web.archive.org/web/20141225205341/http://blog.websummit.net/200-pitch-shortlist/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/10/Web-Summit.jpg" alt="asd"/></a>
+                </li>
+
+				 <li>
+                    <a target="_blank" href="http://web.archive.org/web/20141225205341/http://www.slacker.com/station/abc-news/1974/0/32432244/41261794?sharedby=433479712&amp;sharedon=1409126901"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/08/abc_radio_x200.jpg" alt="asd"/></a>
+                </li>
+
+				 <li>
+                    <a target="_blank" href="http://web.archive.org/web/20141225205341/http://www.youtube.com/watch?v=eEayZqd4ZxU"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/05/foxnews.png" alt="asd"/></a>
+                </li>
+
+				 <li>
+                    <a target="_blank" href="http://web.archive.org/web/20141225205341/http://mashable.com/2014/03/02/apploi/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/05/mashable.png" alt="asd"/></a>
+                </li>
+
+				 <li>
+                    <a target="_blank" href="http://web.archive.org/web/20141225205341/http://live.wsj.com/video/looking-for-a-job-apps-take-on-hiring-process/9EC959A1-316E-4E4F-BF9A-4671211B58AB.html#!9EC959A1-316E-4E4F-BF9A-4671211B58AB"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/05/wsj.png" alt="asd"/></a>
+                </li>
+
+				 <li>
+                    <a target="_blank" href="http://web.archive.org/web/20141225205341/http://abcnews.go.com/Business/video/apploi-app-job-seekers-21099014"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/04/abc-news-80x80.png" alt="asd"/></a>
+                </li>
+
+				 <li>
+                    <a target="_blank" href="http://web.archive.org/web/20141225205341/http://www.bloomberg.com/video/why-today-s-jobs-numbers-could-be-better-cTX9poO6TeanLAmPniHDUg.html"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/04/bloomberg_orange_box1-80x801.png" alt="asd"/></a>
+                </li>
+
+
+        </ul>
+       
+    </div>
+</div>
+<!--
+<script>
+                $('#press-slider .slides').carouFredSel({
+                    auto: false,
+                    items:2 ,
+                    prev: '#p-prev',
+                    next: '#p-next',
+                    scroll : {
+            items           : 1,
+            duration        : 500,                         
+            pauseOnHover    : true
+        }    ,
+                    mousewheel: true,
+                    swipe: {
+                        onMouse: true,
+                        onTouch: true
+                    }
+                });
+
+</script>
+-->     
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+	<div id="secondary" class="widget-area" role="complementary">
+		<aside id="trending-jobs-3" class="widget widget_trending-jobs"><h1 class="widget-title">Trending Jobs</h1><div class="plugin_inner"><ul><li><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=jcrew-24725">Sales Associate: Fifth Avenue &gt;</a></li><li><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=uniqlo-10271">Sales, 34th Street &gt;</a></li><li><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/find-a-job/?job=uniqlo-13176">Sales, Brooklyn &gt;</a></li></ul></div></aside><aside id="related-articles-2" class="widget widget_related-articles"><h1 class="widget-title">Related Articles</h1><div class="plugin_inner"><ul><li style="text-align: center;margin-bottom: 10px;"> <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/ask-jessica-starbucks-edition/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/06/ask-jessica-starbucks-edition-125x125.jpg"><span class="clamper">Ask Jessica: Starbucks Edition &gt;</span></a></li><li style="text-align: center;margin-bottom: 10px;"> <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/modern-day-job-search/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/09/shutterstock_162704267-e1410357395799-125x125.jpg"><span class="clamper">The Modern-Day Job Search &gt;</span></a></li><li style="text-align: center;margin-bottom: 10px;"> <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/bob-ravener-offers-job-advice-to-veterans-re-entering-civilian-life/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/08/Screen-shot-2014-07-31-at-5.58.04-PM-125x125.png"><span class="clamper">Bob Ravener Offers Job Advice to Veterans Re-entering Civilian Life &gt;</span></a></li><li style="text-align: center;margin-bottom: 10px;"> <a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/bob-ravener-on-his-book-up-the-difference-between-today-and-tomorrow-is-you/"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/uploads/2014/08/Screen-shot-2014-07-24-at-3.46.50-PM-125x125.png"><span class="clamper">Bob Ravener on His Book Up! The Difference Between Today&hellip; &gt;</span></a></li></ul> </div></aside>	</div><!-- #secondary -->
+    </div> <!-- wrap -->
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo" style="position: absolute; width: 100%;">
+		<div class="site-info">
+			<div class="wrap">
+			<div id="foot-logo"><a href="#"><img src="http://web.archive.org/web/20141225205341im_/http://www.apploi.com/wp-content/themes/apploi/img/footer-logo.png" alt=""></a></div>
+			<div id="foot-icons">
+
+			<a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/contact-us">Contact Us</a>
+			<a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/about-us">About Us</a>
+			
+			
+			</div>
+			</div>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+ <div id="login-content" style="">
+        <form action="http://web.archive.org/web/20141225205341/http://www.apploi.com/wp-content/themes/apploi/login_handler.php" method="post">
+          <fieldset id="inputs">
+            <input id="username" type="email" name="username" placeholder="Your email address" required autocomplete="off">   
+            <input id="password" type="password" name="password" placeholder="Password" required autocomplete="off">
+          </fieldset>
+          <fieldset id="actions">
+            <input type="submit" id="submit" value="Log in">
+            <br>
+            <label class="center black"><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/forgot-password/">Forgot Password?</a></label>
+            <label class="center orange"><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/join/">Register</a></label>
+          </fieldset>
+        </form>
+        <div id="loggedin" style="display: none;">
+            <label class="center black"><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/passport/">My Profile</a></label>
+            <hr>
+            <label class="center black"><a href="http://web.archive.org/web/20141225205341/http://www.apploi.com/wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Fwww.apploi.com%2Fcandidate%2Fsignout%3FredirectUrl%3Dhttp%3A%2F%2Fwww.apploi.com&amp;_wpnonce=9fcc827791">Sign Out</a></label>
+
+        </div>
+      </div>
+
+
+  <script>
+$('.clamper').each(function(index, element) {
+    $clamp(element, { clamp: 3, useNativeClamp: false,truncationChar : ' >' });
+});
+    </script>
+
+	<div style="display:none">
+	</div>
+
+		<script>
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(showPosition,showError);
+    }
+  else{console.log("Geolocation is not supported by this browser.");}
+  }
+
+function showPosition(position)
+  {
+  var lat = position.coords.latitude;
+  var long = position.coords.longitude;
+
+  console.log(lat + "    " + long);
+
+  $.ajax({
+                            url: "http://web.archive.org/web/20141225205341/http://www.apploi.com/wp-content/themes/apploi/inc/coord_cookie.php",  
+                            type:"GET",  
+                            data: "&lat="+ lat  + "&long=" + long
+                        });
+  }
+
+function showError(error)
+  {
+  switch(error.code) 
+    {
+    case error.PERMISSION_DENIED:
+      console.log("User denied the request for Geolocation.");
+      break;
+    case error.POSITION_UNAVAILABLE:
+    	 console.log("Location information is unavailable.");
+      break;
+    case error.TIMEOUT:
+      console.log("The request to get user location timed out.");
+      break;
+    case error.UNKNOWN_ERROR:
+      console.log("An unknown error occurred.");
+      break;
+    }
+  }
+
+  getLocation();
+</script>
+
+	<script type="text/javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/plugins/doptg/libraries/js/jquery.mousewheel.js?ver=4.0"></script>
+<script type="text/javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/plugins/doptg/libraries/js/jquery.jscrollpane.min.js?ver=4.0"></script>
+<script type="text/javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/plugins/doptg/assets/js/jquery.dop.ThumbnailGallery.js?ver=4.0"></script>
+<script type="text/javascript" src="http://web.archive.org/web/20141225205341js_/http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201452"></script>
+<script type="text/javascript" src="http://web.archive.org/web/20141225205341js_/http://s.gravatar.com/js/gprofiles.js?ver=2014Decaa"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.0"></script>
+<script type="text/javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/navigation.js?ver=20120206"></script>
+<script type="text/javascript" src="http://web.archive.org/web/20141225205341js_/http://www.apploi.com/wp-content/themes/apploi/js/skip-link-focus-fix.js?ver=20130115"></script>
+
+	<script src="http://web.archive.org/web/20141225205341js_/http://stats.wordpress.com/e-201452.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	st_go({v:'ext',j:'1:3.0.2',blog:'70357326',post:'54',tz:'-5'});
+	var load_cmc = function(){linktracker_init(70357326,54,2);};
+	if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+	else load_cmc();
+	</script>
+<!--
+<div id="and"><a href="https://play.google.com/store/apps/details?id=com.apploi"><img src="http://www.apploi.com/wp-content/uploads/2014/06/android.png"></a></div>
+<div id="ios"><a href="https://itunes.apple.com/us/app/apploi-job-search-find-jobs/id615880658?mt=8"><img src="http://www.apploi.com/wp-content/uploads/2014/06/ios.png"></a></div>
+<style>
+@media (max-width: 320px) {
+#page {
+display: none;
+}
+#login-content{display:none;}
+}
+</style>
+<script>
+        if (navigator.userAgent.match(/Android/i)) {
+ 	    $('#page').html('');
+ 	    $('#login-content').html('');
+            $('#and').show();
+        }
+        else if (navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+ 	    $('#page').html('');
+		$('#login-content').html('');
+            $('#ios').show();
+        }
+var _prum = [['id', '53b54d38abe53d813689b286'],
+             ['mark', 'firstbyte', (new Date()).getTime()]];
+(function() {
+    var s = document.getElementsByTagName('script')[0]
+      , p = document.createElement('script');
+    p.async = 'async';
+    p.src = '//rum-static.pingdom.net/prum.min.js';
+    s.parentNode.insertBefore(p, s);
+})();
+</script>
+-->
+
+<!-- Google Code for Remarketing Tag -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 965403275;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+var google_conversion_format = 3;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//web.archive.org/web/20141225205341js_/http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//web.archive.org/web/20141225205341im_/http://googleads.g.doubleclick.net/pagead/viewthroughconversion/965403275/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//web.archive.org/web/20141225205341/http://dnn506yrbagrg.cloudfront.net/pages/scripts/0025/9935.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-2.newrelic.com","licenseKey":"68e17281f4","applicationID":"4103022","transactionName":"YFYHZEoDCEYAVEAKWlkcJFNMCwlbTkdVBFAaWwpdXQ==","queueTime":0,"applicationTime":16907,"ttGuid":"","agentToken":"","atts":"TBEEEgIZG0g=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-476.min.js"}</script></body>
+</html>
+<!--
+     FILE ARCHIVED ON 20:53:41 Dec 25, 2014 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 15:04:43 Jun 05, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 124.0
+  exclusion.robots: 0.136
+  exclusion.robots.policy: 0.125
+  cdx.remote: 0.064
+  esindex: 0.01
+  LoadShardBlock: 77.338 (3)
+  PetaboxLoader3.datanode: 106.01 (4)
+  load_resource: 150.087
+  PetaboxLoader3.resolve: 70.537
+-->

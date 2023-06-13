@@ -1,0 +1,353 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=1WaXNDFE" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("http://web.archive.org/web");
+  __wm.wombat("http://www.hopeworks.org:80/","20100326084904","http://web.archive.org/","web","/_static/",
+	      "1269593344");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+
+<!--[if lt IE 7]>
+	<link rel="stylesheet" href="http://hopeworks.org/themes/Tarren/ie6.css" />
+<![endif]-->
+<!--[if lt IE 7]>
+<script language="JavaScript">
+function correctPNG() // correctly handle PNG transparency in Win IE 5.5 & 6.
+{
+   var arVersion = navigator.appVersion.split("MSIE")
+   var version = parseFloat(arVersion[1])
+   if ((version >= 5.5) && (document.body.filters))
+   {
+      for(var i=0; i<document.images.length; i++)
+      {
+         var img = document.images[i]
+         var imgName = img.src.toUpperCase()
+         if (imgName.substring(imgName.length-3, imgName.length) == "PNG")
+         {
+            var imgID = (img.id) ? "id='" + img.id + "' " : ""
+            var imgClass = (img.className) ? "class='" + img.className + "' " : ""
+            var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' "
+            var imgStyle = "display:inline-block;" + img.style.cssText
+            if (img.align == "left") imgStyle = "float:left;" + imgStyle
+            if (img.align == "right") imgStyle = "float:right;" + imgStyle
+            if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle
+            var strNewHTML = "<span " + imgID + imgClass + imgTitle
+            + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";"
+            + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"
+            + "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>"
+            img.outerHTML = strNewHTML
+            i = i-1
+         }
+      }
+   }
+}
+window.attachEvent("onload", correctPNG);
+</script>
+<![endif]-->
+  <script>
+
+  var imageArray = new Array();
+  var thumbArray = new Array();
+
+  imageArray[0] = '<img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/camden09map.jpg"><div id="imgnotes">Hopeworks 2009 Camden Map</div>';
+  imageArray[1] = '<img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/matt_helping.jpg"><div id="imgnotes">Volunteer Matt Dayton helps youth</div>';
+  imageArray[2] = '<img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/erika_john.jpg"><div id="imgnotes">Youth surveying assets for United Water</div>';
+  imageArray[3] = '<img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/welcome_spring.jpg"><div id="imgnotes"></div>';
+  imageArray[4] = '<img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/cribreno_.jpg"><div id="imgnotes">C.R.I.B. renovations continue</div>';
+  imageArray[5] = '<object width="524" height="239"><param name="movie" value="http://web.archive.org/web/20100326084904/http://www.youtube.com/v/rvjWwQ_dLCQ&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://web.archive.org/web/20100326084904/http://www.youtube.com/v/rvjWwQ_dLCQ&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="524" height="239"></embed></object>';
+  imageArray[6] = '<img src="http://web.archive.org/web/20100326084904/http://www.hopeworks.org/images/recent_sites.jpg" width="524" height="239" border="0" usemap="#Map" /><map name="Map" id="Map"><area shape="rect" coords="387,105,518,207" href="http://web.archive.org/web/20100326084904/http://esaboston.com/" target="_blank" alt="Porticus North America" /><area shape="rect" coords="192,103,324,210" href="http://web.archive.org/web/20100326084904/http://uniquefeeder.net/" target="_blank" alt="Unique Feeder" /><area shape="rect" coords="2,103,136,211" href="http://web.archive.org/web/20100326084904/http://www.porticusna.com/" target="_blank" alt="Elizabeth Seton Academy" /><area shape="rect" coords="12,23,420,57" href="http://web.archive.org/web/20100326084904/http://www.hopeworks.org/node/26" target="_parent" alt="visit page" /></map> ';
+  imageArray[7] = '<img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/golden_mouse_winner.jpg"><div id="imgnotes">Hopeworks 2009 Golden Mouse Winner</div>';
+  imageArray[8] = '<img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/dropout_stat.gif"><div id="imgnotes"></div>';
+  imageArray[9] = '<img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/Literacymack.jpg"><div id="imgnotes">Literacy session with Shawn Mack.</div>';
+  imageArray[10] = '<object width="524" height="239"><param name="movie" value="http://web.archive.org/web/20100326084904/http://www.youtube.com/v/qPhrkowSF_M&hl=en&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://web.archive.org/web/20100326084904/http://www.youtube.com/v/qPhrkowSF_M&hl=en&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="524" height="239"></embed></object>';
+  imageArray[11] = '<a href="http://web.archive.org/web/20100326084904/http://www.hopeworks.org/node/165"><img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/subscribe_big copy.jpg"></a><div id="imgnotes">Hopeworks Newsletter</div>';
+  imageArray[12] = '<img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/youth_tourcrib.jpg"><div id="imgnotes">Hopeworks youth tour the C.R.I.B.</div>';
+  imageArray[13] = '<img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/webgroup.jpg"><div id="imgnotes">GEB youth hard at work.</div>';
+  imageArray[14] = '<a href="http://web.archive.org/web/20100326084904/http://hopeworks.org/dinner"><img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/hts_trainees.jpg"></a><div id="imgnotes">Hopeworks HTS Trainees</div>';
+  imageArray[15] = '<a href="http://web.archive.org/web/20100326084904/http://hopeworks.org/marchgis"><img  id="main_image" src="http://web.archive.org/web/20100326084904/http://hopeworks.org/images/Formationmatt.jpg"></a><div id="imgnotes">Formation session with Matt Dayton</div>';
+
+  thumbArray[0] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/camden09map_t.jpg";
+  thumbArray[1] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/matt_helping_t.jpg";
+  thumbArray[2] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/erika_john_t.jpg";
+  thumbArray[3] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/welcome_spring_t.jpg";
+  thumbArray[4] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/cribreno_t.jpg";
+  thumbArray[5] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/college_tour_t.jpg";
+  thumbArray[6] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/recentsites_t.jpg";
+  thumbArray[7] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/golden_mouse_winner_t.jpg";
+  thumbArray[8] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/dropout_stat_t.gif";
+  thumbArray[9] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/Literacymack_t.jpg";
+  thumbArray[10] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/OneDay_VideoBanner_t.jpg";
+  thumbArray[11] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/subcribe_small.jpg";
+  thumbArray[12] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/youth_tourcrib_t.jpg";
+  thumbArray[13] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/webgroup_t.jpg";
+  thumbArray[14] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/hts_trainees_t.jpg";
+  thumbArray[15] = "http://web.archive.org/web/20100326084904/http://hopeworks.org/images/Formationmatt_t.jpg";
+
+  var the_len = imageArray.length;
+  var the_round = Math.floor(the_len*Math.random());
+
+  var main_pos = the_round;
+
+  if (main_pos <= (the_len - 3))
+  {
+  	var two_pos = main_pos + 1;
+  	var three_pos = main_pos + 2;
+  }
+  else if (main_pos = (the_len - 2))
+  {
+  	var two_pos = main_pos + 1;
+  	var three_pos = 0;
+  }
+  else
+  {
+  	var two_pos = 0;
+  	var three_pos = 1;
+  }
+
+function setImagesUp()
+{
+document.getElementById("img_pos1").src = thumbArray[main_pos];
+document.getElementById("img_pos2").src = thumbArray[two_pos];
+document.getElementById("img_pos3").src = thumbArray[three_pos];
+
+document.getElementById("main_img").innerHTML = imageArray[main_pos];
+setInterval ( "higher_img()", 15000 );
+//setInterval ( "imageChange(1)", 15010);
+}
+
+function lower_img()
+{
+	if(three_pos == (imageArray.length - 1))
+	{
+		main_pos=two_pos;
+		two_pos=three_pos;
+		three_pos = 0;
+
+	}
+	else
+	{
+		main_pos=two_pos;
+		two_pos=three_pos;
+		three_pos ++;
+	}
+updateimages();
+}
+
+function higher_img()
+{
+	if(main_pos == 0)
+	{
+		three_pos=two_pos;
+		two_pos=main_pos;
+		main_pos = imageArray.length - 1;
+
+	}
+	else
+	{
+		three_pos = two_pos;
+		two_pos=main_pos;
+		main_pos --;;
+	}
+updateimages();
+}
+function imageChange(changeIndex)
+{
+	if(changeIndex == "1")
+	{
+  		document.getElementById("main_img").innerHTML = imageArray[main_pos];
+  	}
+  	else if(changeIndex == "2")
+  	{
+  		 document.getElementById("main_img").innerHTML = imageArray[two_pos];
+  	}
+  	else
+  	{
+  		 document.getElementById("main_img").innerHTML = imageArray[three_pos];
+  	}
+}
+function updateimages()
+{
+document.getElementById("img_pos1").src = thumbArray[main_pos];
+document.getElementById("img_pos2").src = thumbArray[two_pos];
+document.getElementById("img_pos3").src = thumbArray[three_pos];
+}
+
+  </script>
+
+    <title>Hopeworks.org</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="alternate" type="application/rss+xml" title="Hopeworks.org RSS" href="http://web.archive.org/web/20100326084904/http://www.hopeworks.org/rss.xml"/>
+
+    <link type="text/css" rel="stylesheet" media="all" href="/web/20100326084904cs_/http://www.hopeworks.org/modules/aggregator/aggregator.css?7"/>
+<link type="text/css" rel="stylesheet" media="all" href="/web/20100326084904cs_/http://www.hopeworks.org/modules/cck/theme/content.css?7"/>
+<link type="text/css" rel="stylesheet" media="all" href="/web/20100326084904cs_/http://www.hopeworks.org/modules/cck/modules/fieldgroup/fieldgroup.css?7"/>
+<link type="text/css" rel="stylesheet" media="all" href="/web/20100326084904cs_/http://www.hopeworks.org/modules/node/node.css?7"/>
+<link type="text/css" rel="stylesheet" media="all" href="/web/20100326084904cs_/http://www.hopeworks.org/modules/simplenews/simplenews.css?7"/>
+<link type="text/css" rel="stylesheet" media="all" href="/web/20100326084904cs_/http://www.hopeworks.org/modules/system/defaults.css?7"/>
+<link type="text/css" rel="stylesheet" media="all" href="/web/20100326084904cs_/http://www.hopeworks.org/modules/system/system.css?7"/>
+<link type="text/css" rel="stylesheet" media="all" href="/web/20100326084904cs_/http://www.hopeworks.org/modules/system/system-menus.css?7"/>
+<link type="text/css" rel="stylesheet" media="all" href="/web/20100326084904cs_/http://www.hopeworks.org/modules/user/user.css?7"/>
+<link type="text/css" rel="stylesheet" media="all" href="/web/20100326084904cs_/http://www.hopeworks.org/modules/event/event.css?7"/>
+<link type="text/css" rel="stylesheet" media="all" href="/web/20100326084904cs_/http://www.hopeworks.org/themes/Tarren/style.css?7"/>
+<link type="text/css" rel="stylesheet" media="print" href="/web/20100326084904cs_/http://www.hopeworks.org/themes/Tarren/print.css?7"/>
+    <script type="text/javascript" src="/web/20100326084904js_/http://www.hopeworks.org/misc/jquery.js?7"></script>
+<script type="text/javascript" src="/web/20100326084904js_/http://www.hopeworks.org/misc/drupal.js?7"></script>
+<script type="text/javascript">jQuery.extend(Drupal.settings, { "basePath": "/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });</script>
+    <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/Tarren/fix-ie.css" />    <![endif]-->
+    <meta name="google-site-verification" content="xteJxajYk-KDC8Zmdf7IXhffZH5geChs07t-zembhzA"/>
+  </head>
+  <body class="sidebar-right">
+<div id="big_wrapper" border="0">
+<center>
+<!-- Layout -->
+	<div id="top_space">&nbsp;</div>
+	<div id="custom_wrapper">
+	<div id="custom_header">
+	</div>
+	</div>
+    <div id="wrapper">
+    <div id="container" class="clear-block">
+    <div id="golf_image" style="position:absolute; top:0px; margin-left:585px;"><a href="http://web.archive.org/web/20100326084904/http://hopeworks.org/golf"><img src="/web/20100326084904im_/http://www.hopeworks.org/images/golf_classic.png" border="0"></a></div>
+	<div id="socialnet" style="left: 485px; position: relative; height: 25px; padding-top: 5px;">
+		<div class="smallBlocksTitle">Social<b>Networking</b></div>
+		<div class="smallBlocks"><a href="http://web.archive.org/web/20100326084904/http://digg.com/submit?phase=2&amp;url=http%3A//hopeworks.org/"><img src="http://web.archive.org/web/20100326084904im_/http://hopeworks.org/themes/Tarren/img/digg.png" border="0"></a></div>
+		<div class="smallBlocks"><a href="http://web.archive.org/web/20100326084904/https://secure.del.icio.us/login?url=http%3A//hopeworks.org/&amp;title=Hopeworks&amp;noui&amp;partner=addthis&amp;v=4"><img src="http://web.archive.org/web/20100326084904im_/http://hopeworks.org/themes/Tarren/img/4square.gif" border="0"></a></div>
+		<div class="smallBlocks"><a href="http://web.archive.org/web/20100326084904/http://www.facebook.com/pages/Camden-NJ/Hopeworks-N-Camden/15559925522"><img src="http://web.archive.org/web/20100326084904im_/http://hopeworks.org/themes/Tarren/img/facebook.gif" border="0"></a></div>
+		<div class="smallBlocks"><a href="http://web.archive.org/web/20100326084904/https://www.google.com/accounts/ServiceLogin?hl=en&amp;continue=http://www.google.com/bookmarks/mark?op=add&amp;bkmk=http%3A%2F%2Fhopeworks.org&amp;title=Hopeworks&amp;nui=1&amp;service=bookmarks"><img src="http://web.archive.org/web/20100326084904im_/http://hopeworks.org/themes/Tarren/img/google.gif" border="0"></a></div>
+		<div class="smallBlocks"><a href="http://web.archive.org/web/20100326084904/http://technorati.com/faves/?add=http%3A//hopeworks.org"><img src="http://web.archive.org/web/20100326084904im_/http://hopeworks.org/themes/Tarren/img/q.png" border="0"></a></div>
+		<div class="smallBlocks"><a href="http://web.archive.org/web/20100326084904/https://www.newsvine.com/_tools/user/login?redirect=http%3A//www.newsvine.com/_tools/seed&amp;save?u=http%3A%2F%2Fhopeworks.org&amp;h=Hopeworks"><img src="http://web.archive.org/web/20100326084904im_/http://hopeworks.org/themes/Tarren/img/green_tree.png" border="0"></a></div>
+		<div class="smallBlocks"><a href="http://web.archive.org/web/20100326084904/http://myweb2.search.yahoo.com/myresults/bookmarklet?u=http%3A//hopeworks.org&amp;t=Hopeworks"><img src="http://web.archive.org/web/20100326084904im_/http://hopeworks.org/themes/Tarren/img/yahoo.png" border="0"></a></div>
+		<div class="smallBlocks"><a href="http://web.archive.org/web/20100326084904/http://www.twitter.com/hopeworkscamden"><img src="http://web.archive.org/web/20100326084904im_/http://hopeworks.org/themes/Tarren/img/twitter.gif" border="0"></a></div>
+	</div>
+      <div id="header" style="margin-bottom:0px;">
+        <div id="logo-floater">
+        <h1><a href="/web/20100326084904/http://www.hopeworks.org/" title=""><img src="/web/20100326084904im_/http://www.hopeworks.org/themes/Tarren/images/hw_logo.png" alt="" id="logo"/></a></h1>        </div>
+                  <ul class="links primary-links"><li class="menu-115 first"><a href="/web/20100326084904/http://www.hopeworks.org/node/10" title="">About</a></li>
+<li class="menu-116"><a href="/web/20100326084904/http://www.hopeworks.org/node/42" title="">Programs</a></li>
+<li class="menu-118"><a href="/web/20100326084904/http://www.hopeworks.org/node/28" title="">Trainees</a></li>
+<li class="menu-119"><a href="/web/20100326084904/http://www.hopeworks.org/node/451" title="">Web &amp; GIS</a></li>
+<li class="menu-121"><a href="/web/20100326084904/http://www.hopeworks.org/node/7" title="">Donate</a></li>
+<li class="menu-122"><a href="/web/20100326084904/http://www.hopeworks.org/node/8" title="">Volunteer</a></li>
+<li class="menu-123 last"><a href="/web/20100326084904/http://www.hopeworks.org/node/9" title="">Contact</a></li>
+</ul>                                        </div>
+      <!-- /header -->
+	<div id="main_img" name="main_img"></div>
+	<div id="news_box" name="news_box"><div id="block-block-37" class="clear-block block block-block">
+
+
+  <div class="content"><p><strong>News</strong></p>
+</div>
+</div>
+<div id="block-views-News-block_1" class="clear-block block block-views">
+
+
+  <div class="content"><div class="view view-News view-id-News view-display-id-block_1">
+    
+  
+  
+      <div class="view-content">
+          
+  <div class="views-field-title">
+          <span class="field-content"><a href="/web/20100326084904/http://www.hopeworks.org/node/193">New Sites Created By Hopeworks</a></span>
+  </div>
+    
+  <div class="views-field-title">
+          <span class="field-content"><a href="/web/20100326084904/http://www.hopeworks.org/node/276">2010 Hopeworks Scholarship Applications</a></span>
+  </div>
+    
+  <div class="views-field-title">
+          <span class="field-content"><a href="/web/20100326084904/http://www.hopeworks.org/node/236">Upcoming sites by Hopeworks</a></span>
+  </div>
+    
+  <div class="views-field-title">
+          <span class="field-content"><a href="/web/20100326084904/http://www.hopeworks.org/node/608">Thank You Christina and Salesforce!</a></span>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+      <div class="feed-icon">
+      <a href="/web/20100326084904/http://www.hopeworks.org/node/108" class="feed-icon"><img src="/web/20100326084904im_/http://www.hopeworks.org/misc/feed.png" alt="Syndicate content" title="News" width="16" height="16"/></a>    </div>
+  
+</div> </div>
+</div>
+<div id="block-block-36" class="clear-block block block-block">
+
+
+  <div class="content"><p><strong>Events</strong></p>
+</div>
+</div>
+<div id="block-event-1" class="clear-block block block-event">
+
+  <h2>Events</h2>
+
+  <div class="content"><div class="item-list"><ul><li class="first"><a href="/web/20100326084904/http://www.hopeworks.org/node/603" title="3/30 - 4/5 - Happy Passover!">3/30 - 4/5 - Happy Passover!</a><span class="event-timeleft">(4 days)</span></li>
+<li><a href="/web/20100326084904/http://www.hopeworks.org/node/598" title="3/31 - Happy Birthday Rey!">3/31 - Happy Birthday Rey!</a><span class="event-timeleft">(5 days)</span></li>
+<li class="last"><a href="/web/20100326084904/http://www.hopeworks.org/node/599" title="4/1 - Holy Thursday">4/1 - Holy Thursday</a><span class="event-timeleft">(6 days)</span></li>
+</ul></div><div class="ical-link"><a href="http://web.archive.org/web/20100326084904/http://www.hopeworks.org/event/ical" title="Add this calendar to your iCalendar"><img src="/web/20100326084904im_/http://www.hopeworks.org/modules/event/images/ical16x16.gif" alt="Add to iCalendar"/></a></div><div class="more-link"><a href="/web/20100326084904/http://www.hopeworks.org/event" title="More events.">more</a></div></div>
+</div>
+	</div>
+	<div id="img_slider" name="img_slider">
+			<div id="mini_wrapper" style="position:relative; height:71px; width:524px">
+			<div id="left_arrow" style="position:relative; left:0px;text-align:left; float:left;"><a href="#" onclick="higher_img()"><img src="http://web.archive.org/web/20100326084904im_/http://hopeworks.org/themes/Tarren/images/left_arrow.gif" border="0"></a></div>
+			<div id="main_img_hold" style="float:left; text-align:center;margin-top:2px; margin-left:5px; margin-right:5px; width:485px"><a href="#" onclick="imageChange('1')"><img hspace="5" id="img_pos1"></a><a href="#" onclick="imageChange('2')"><img hspace="5" id="img_pos2"></a><a href="#" onclick="imageChange('3')"><img hspace="5" id="img_pos3"></a></div>
+			<div id="right_arrow" style="width:16px; position:relative; right:0px;text-align:right; float:left"><a href="#" onclick="lower_img()"><img src="http://web.archive.org/web/20100326084904im_/http://hopeworks.org/themes/Tarren/images/right_arrow.gif" align="right" border="0"></a></div>
+			</div>
+	</div>
+
+<div id="for_youth" name="for_youth">At Hopeworks you can earn a job, learn how  to build websites, get back in school, get into college, make movies, have fun, and meet new people!<br/><br/>
+	<div style="width:230px;text-align:right;"><a href="node/95">Learn More <font color="#d3a319">&gt;&gt;</font></a></div>
+	<div style="height:30px; width:230px;text-align:left; padding-top:15px; position:relative; left:-8px;"><a href="http://web.archive.org/web/20100326084904/http://hopeworks.org/node/95"><img src="/web/20100326084904im_/http://www.hopeworks.org/images/click_here_trainee.gif" border="0"></a></div>
+</div>
+<div id="for_org" name="for_org">Need a Web Site?  Looking for GIS services?  Since we opened in 2000 Hopeworks has produced web sites and GIS work for over 180 satisfied clients.
+
+<br/><br/>
+<div style="width:230px;text-align:right;"><a href="node/111">Learn More <font color="#e15816">&gt;&gt;</font></a><br/></div>
+	</div>
+<div id="for_donors" name="for_donor">Our mission at Hopeworks is to empower youth to develop their D.R.E.A.M.S. (Dynamic Realizable Efforts to Attain and Maintain Success) and to own their future.
+ <br/><br/>
+ <div style="width:230px;text-align:right;"><a href="node/98">Learn More <font color="#0b47a8">&gt;&gt;</font></a></div></div>
+    </div> <!-- /container -->
+  </div>
+<!-- /layout -->
+<div id="footer">Hopeworks 'N Camden • 543 State Street, Camden, NJ 08102 • 856.365.4673 • <a href="http://web.archive.org/web/20100326084904/mailto:contact@hopeworks.org">contact@hopeworks.org</a><br>Hopeworks Newsletter: <a href="/web/20100326084904/http://www.hopeworks.org/node/165">Subscribe</a> | <a href="/web/20100326084904/http://www.hopeworks.org/node/163">UnSubscribe</a>
+</div>
+  <script type="text/javascript" src="/web/20100326084904js_/http://www.hopeworks.org/modules/google_analytics/googleanalytics.js?7"></script>
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "http://web.archive.org/web/20100326084904/https://ssl." : "http://web.archive.org/web/20100326084904/http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+<script type="text/javascript">var pageTracker = _gat._getTracker("UA-329136-1");pageTracker._trackPageview();</script>
+ </center>
+ <script>
+ setImagesUp();
+ </script>
+</div>
+  </body>
+</html>
+<!--
+     FILE ARCHIVED ON 08:49:04 Mar 26, 2010 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 17:32:42 Jun 02, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 1731.104
+  exclusion.robots: 0.166
+  exclusion.robots.policy: 0.153
+  cdx.remote: 0.076
+  esindex: 0.01
+  LoadShardBlock: 746.449 (3)
+  PetaboxLoader3.datanode: 825.845 (4)
+  load_resource: 273.886
+  PetaboxLoader3.resolve: 77.705
+-->

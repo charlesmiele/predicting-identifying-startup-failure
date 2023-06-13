@@ -1,0 +1,10 @@
+entityid,domain,time_of_run,earliest_screenshot,start_date_with_buffer,latest_screenshot,end_date_with_buffer,file_path,failed,reason_for_failure
+91249,www.pkc.com,2023-06-12 16:05:15,1998-12-12 03:19:15,1981-07-05,2012-11-04 10:16:10,2012-12-15,optimal_timestamps/91249_timestamps.csv,0,
+1031212316,www.blusapphire.com,2023-06-12 16:05:15,2014-05-17 06:15:11,2013-07-05,2023-03-31 16:23:42,2023-06-06,optimal_timestamps/1031212316_timestamps.csv,0,
+66149,www.deciphera.com,2023-06-12 16:05:15,2003-04-02 12:51:19,2002-07-05,2017-09-30 02:35:50,2018-03-27,optimal_timestamps/66149_timestamps.csv,0,
+700102,www.vantiq.com,2023-06-12 16:05:15,2015-12-12 19:36:23,2014-04-09,2023-05-26 23:46:08,2023-06-06,optimal_timestamps/700102_timestamps.csv,0,
+658538,www.acelearningco.com,2023-06-12 16:05:15,2011-02-02 09:00:32,2010-07-05,2022-12-02 22:41:13,2023-06-06,optimal_timestamps/658538_timestamps.csv,0,
+687832,www.fotonotes.com,2023-06-12 16:05:15,2008-09-15 15:51:42,2008-07-05,2023-05-24 18:14:03,2023-06-06,optimal_timestamps/687832_timestamps.csv,0,
+710660,www.risebrewingco.com,2023-06-12 16:05:15,2017-06-12 09:57:31,2014-02-02,2023-05-03 14:31:53,2023-06-06,optimal_timestamps/710660_timestamps.csv,0,
+616382,www.locu.com,2023-06-12 16:05:15,2011-10-07 05:43:12,2010-07-05,2014-02-07 12:56:49,2014-02-15,optimal_timestamps/616382_timestamps.csv,0,
+717990,www.sundaygoods.com,2023-06-12 16:05:15,2016-10-06 23:27:36,2015-07-05,2023-06-02 14:40:42,2023-06-06,optimal_timestamps/717990_timestamps.csv,0,

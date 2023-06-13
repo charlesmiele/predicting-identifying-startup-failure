@@ -1,0 +1,233 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=1WaXNDFE" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("http://web.archive.org/web");
+  __wm.wombat("http://300.mg:80/","20110418232954","http://web.archive.org/","web","/_static/",
+	      "1303169394");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>300.mg - Activity Dashboard for 37signals Apps</title>
+<meta http-equiv="Content-type" value="text/html; charset=utf-8"/>
+<meta name="title" content="300.mg - Activity Dashboard for 37signals Apps"/>
+<meta name="description" content="I have signed up for 300mg enterprise stream aggregator launch! Join me. #launch"/>
+
+
+<script type="text/javascript">
+
+function validateInviteEmail(){
+    var error;
+    if($("#email").val()==""){
+        error="Error sending e-mail: no sender address";
+        return false;
+    }
+    if($("#senderName").val()==""){
+        error="Error sending invites: no sender name";
+        return false;
+    }
+    if($("#emailList").html()==""){
+        error="Error sending invites: no addresses specified";
+        return false;
+    }
+    return true;
+}
+function slideUpEmail(data){
+    $("#sendmail").slideUp();
+    $("#pagesubmit").slideDown();
+}
+function populateTextarea(contacts){
+    var contact, name, email,emailstring,nameEmail;
+    var emails = [];
+    for (var i = 0; i < contacts.length; i++) {
+        contact = contacts[i];
+
+        name = contact.fullName();
+        email = contact.selectedEmail();
+        nameEmail=email;
+        $("#emailList").html($("#emailList").html() + nameEmail + "\n");
+    }
+    $("#pagesubmit").slideUp();
+    $("#sendmail").slideDown();
+  
+}
+</script>
+
+<link rel="image_src" href="/web/20110418232954im_/http://300.mg/images/1953-15041110953facebook.fbimage.png"/>
+<link rel="stylesheet" href="/web/20110418232954cs_/http://300.mg/style_onetrue.css">
+
+<script src="http://web.archive.org/web/20110418232954js_/http://launchrock.com/lr2.js"></script>
+
+
+ <style>
+#bannerAnnouncementWrapper { 
+ } 
+    </style>
+</head>
+<body>
+<img src="/web/20110418232954im_/http://300.mg/images/" id="bgImage" alt=""/>
+<div id="container">
+
+<div id="content">
+
+<h1><span>300.mg</span></h1>
+
+<div id="makea">Activity Dashboard for 37signals Apps</div>
+
+<div id="description">300.mg introduces a new information sharing paradigm for modern organizations whose workers are mobile and perform their work in multiple locations such as customer sites, company offices, planes, and hotels.</div>
+
+<div id="actionbox">
+<div class="pages" id="pagestart">
+
+<div id="emailbox">
+<p id="invitelist"><em>Launching soon. Enter your email to join our invite list:</em></p>
+<form id="signupform" action="">
+<div>
+<input type="text" id="email" data-initial="your@email.com" value="your@email.com"/>
+<input type="hidden" id="refid" value="0"/>
+<input type="hidden" id="siteId" value="1953"/>
+<input type="hidden" id="apiKey" value="72b289dfbc8633b2b5714d9fd508432e"/>
+<input type="hidden" id="lrDomain" value="300.mg"/>
+<input type="image" style="vertical-align: middle;" name="submit" id="submit" src="http://web.archive.org/web/20110418232954im_/http://launchrock.com/images/Submit-Button.png"/>
+
+</div>
+</form>
+
+<div class="clear"></div>
+
+<div id="information"></div>
+<!-- /emailbox -->
+
+</div>
+<div class="pages hidden" id="pagesubmit"></div>
+    <div class="pages hidden" id="sendmail">
+    <form action="" id="emailForm" style="text-align:left">
+    <p>Your Name (required): <br/><input type="text" value="" id="senderName"></p>
+    <p>Send Invites To (required - one per line):<br/><textarea wrap="off" name="emailList" id="emailList"></textarea></p>
+    <p>Message (optional):<br/><textarea name="message" id="message"></textarea></p>
+<input type="image" style="vertical-align: middle;" name="submitEmail" id="submitEmail" src="http://web.archive.org/web/20110418232954im_/http://launchrock.com/images/Submit-Button.png"/>
+    
+    </form>
+    </div>
+<p id="learnmore" style="font-size:10px">powered by <a id="logolink" href="http://web.archive.org/web/20110418232954/http://launchrock.com/" target="_new"><img src="/web/20110418232954im_/http://300.mg/images/Logo-small.png" alt="LaunchRock" title="LaunchRock"/></a></p>
+
+<!-- /actionbox -->
+</div>
+</div>
+<div class="clear"></div>
+<!-- /content -->
+</div>
+
+<div id="footer">
+<!-- <p>&copy; LaunchRock.com 2011 | <a href="http://twitter.com/#!/getlaunchrock">@getlaunchrock</a> | <a href="http://www.facebook.com/pages/LaunchRock/195055520506167">Facebook Fan Page</a></p> -->
+</div>
+
+</div>
+<script>
+
+$(document).ready(function(){
+
+        LR.cookieMan = new CookieManager({
+          host: '300.mg'
+        })
+
+        // Handles the resizing of background image:
+        LR.bgImage = new BackgroundImage('bgImage');
+
+        // Handles rendering the post submit content:
+        LR.postSubmit = new PostSignupForm('pagesubmit',{
+          twitterHandle: "300milligrams",
+          twitterMessage: "I have signed up for 300mg enterprise stream aggregator launch! Join me. #launch",
+          newUserHeaderText: "Thanks for signing up. You will be the first to receive the invitation! ",
+          newUserParagraphText: "We are launching 300.mg very soon with support for 37signals apps. <br /><br />To share with your friends, click 'Recommend', 'Tweet' and 'Invite by Email':",
+          returningUserHeaderText: "Welcome Back!",
+          returningUserParagraphText: "We are launching 300.mg very soon with support for 37signals apps. <br /><br />To share with your friends, click 'Recommend', 'Tweet' and 'Invite by Email':",
+          newUserParagraphText3: "Or copy and paste the following link to share wherever you want!",
+          returningUserParagraphText3: "Or copy and paste the following link to share wherever you want!",
+          statsPreText: "Your live stats: ",
+          betaSignUp: "  ",
+          footerLinks: "<a href='http://web.archive.org/web/20110418232954/http://http//www.facebook.com/pages/300mg/200036696702605'>Like Us on Facebook</a> | <a href='http://web.archive.org/web/20110418232954/http://twitter.com/300milligrams'>Follow Us on Twitter</a>",
+          showStats: true
+        })
+
+// Handles events related to signup form, form validations
+// and submitting the form to the server:
+LR.signupForm = new SignupForm('signupform',{
+          wrapperId: "emailbox",
+          emailId: "email",
+          refId: "refid",
+          submitId: "submit",
+          errorDivId: "information",
+          siteId: "siteId"
+        });
+$("#submitEmail").click(function(){
+        if (validateInviteEmail()){
+            $.getJSON("http://web.archive.org/web/20110418232954/http://launchrock.com/api/invite.0.2.php?callback=?", {
+                'fromEmail': $("#email").val(),
+                'senderName': $("#senderName").val(),
+                'apiKey': $("#apiKey").val(),
+                'lrDomain': $("#lrDomain").val(),
+                'refLink': $("#shareurl").val(),
+                'message': $("#message").val(),
+                'emailList' : $("#emailList").val()
+            },slideUpEmail(this));
+          
+        } else {
+            return false;
+        }  
+    
+        return false;
+    });
+
+});
+
+LR.csLoader = new CSLoader('GJ4NAPYFZM2N7FDPEQXS');
+        
+
+
+</script>
+
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "http://web.archive.org/web/20110418232954/https://ssl." : "http://web.archive.org/web/20110418232954/http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try{
+
+var lrPageTracker = _gat._getTracker("UA-21058689-4");
+lrPageTracker._setDomainName("300.mg");
+lrPageTracker._trackPageview();
+
+
+} catch(err) {}</script>
+
+
+</body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 23:29:54 Apr 18, 2011 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 15:42:10 Jun 05, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 3324.876
+  exclusion.robots: 0.101
+  exclusion.robots.policy: 0.094
+  RedisCDXSource: 1.201
+  esindex: 0.009
+  LoadShardBlock: 3308.197 (3)
+  PetaboxLoader3.datanode: 212.365 (4)
+  PetaboxLoader3.resolve: 5013.027 (3)
+  load_resource: 1950.843
+-->

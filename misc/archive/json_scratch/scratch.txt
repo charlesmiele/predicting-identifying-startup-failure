@@ -1,0 +1,11 @@
+https://web.archive.org/web/timemap/json?url=www.aefis.com/&filter=mimetype:text/html&collapse=urlkey&collapse=mimetype&collapse=digest&robotoflags&collapse=length&collapse=offset&collapse=filename:10
+
+1035738515,www.aefis.com,,2012-01-01,2020-02-27,Acquired/Merged,
+
+
+"urlkey","timestamp","original","mimetype","statuscode","digest","redirect","robotflags","length","offset","filename"
+
+
+https://web.archive.org/web/timemap/json?url=www.aefis.com/&fl=timestamp&filter=mimetype:text/html&collapse=timestamp
+
+https://web.archive.org/web/timemap/json?url=www.powderhouse.org/&fl=timestamp&filter=mimetype:text/html

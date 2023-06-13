@@ -17,10 +17,6 @@ script_path = os.path.dirname(script_path)
 url_list_path = os.path.join(script_path, '../data/startup_url_list.csv')
 url_list = pd.read_csv(url_list_path)
 
-# Generate random sample
-random_sample = np.random.randint(len(url_list.index) - 1, size=10)
-url_list = url_list.iloc[random_sample]
-
 # List all JSON files
 timestamp_list = os.listdir(os.path.join(script_path, '../data/raw-json'))
 

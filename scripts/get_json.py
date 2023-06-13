@@ -13,13 +13,14 @@ import subprocess
 script_path = os.path.abspath(__file__)
 script_path = os.path.dirname(script_path)
 
+
 # Import master url list
 url_list_path = os.path.join(script_path, '../data/startup_url_list.csv')
 url_list = pd.read_csv(url_list_path)
 
 # Find not yet downloaded
 json_log = pd.read_csv(os.path.join(
-    script_path, '../log-reports/json-log-report.csv'))
+    script_path, '../log-reports/archive/json-log-report.csv'))
 json_log = json_log[json_log.reason_for_failure != "NoJSON"]
 missing_ids = json_log.entityid
 
@@ -85,4 +86,5 @@ for index, row in url_list.iterrows():
 log_report.to_csv(
     '/Users/charlesmiele/Dropbox/miele/log-reports/json-log-report-06-13.csv')
 
-subprocess.call(["python3", "get_optimal_timestamps.py"])
+subprocess.call(["python3", os.path.join(
+    script_path, "get_optimal_timestamps.py")])

@@ -6,25 +6,24 @@ import os
 import numpy as np
 import pdb
 import datetime
+import subprocess
 
 
-np.set_printoptions(suppress=True)
+# Used for easier compatibility w/ remote server
+script_path = os.path.abspath(__file__)
+script_path = os.path.dirname(script_path)
 
-
-BASE_PATH = '/Users/charlesmiele/Dropbox/miele/measuring-founding-strategy-main/get_timestamps/'
-URL_LIST_PATH = BASE_PATH + 'startup_url_list.csv'
-
-
-url_list = pd.read_csv(URL_LIST_PATH)
-# url_list = url_list[72814:]
+# Import master url list
+url_list_path = os.path.join(script_path, '../data/startup_url_list.csv')
+url_list = pd.read_csv(url_list_path)
 
 # Find not yet downloaded
-timestamp_list = os.listdir(
-    '/Users/charlesmiele/Dropbox/miele/measuring-founding-strategy-main/get_timestamps/out')
-timestamp_list = [int(file_name[:-4]) for file_name in timestamp_list]
-not_downloaded = [x for x in url_list.entityid if x not in timestamp_list]
+json_log = pd.read_csv(os.path.join(
+    script_path, '../log-reports/json-log-report.csv'))
+json_log = json_log[json_log.reason_for_failure != "NoJSON"]
+missing_ids = json_log.entityid
 
-url_list = url_list[url_list['entityid'].isin(not_downloaded)]
+url_list = url_list[url_list['entityid'].isin(missing_ids)]
 
 could_not_connect = []
 no_json = []
@@ -49,8 +48,6 @@ def add_log_row(entityid, domain, failed=0, reason_for_failure="", file_path="")
         'file_path': file_path
     }
     log_report = log_report.append(new_row, ignore_index=True)
-    log_report.to_csv(
-        '/Users/charlesmiele/Dropbox/miele/measuring-founding-strategy-main/get_timestamps/log_report.csv')
 
 
 for index, row in url_list.iterrows():
@@ -63,7 +60,7 @@ for index, row in url_list.iterrows():
         timestamps = response.json()
 
         # Define the CSV file path
-        directory_path = "/Users/charlesmiele/Dropbox/miele/measuring-founding-strategy-main/get_timestamps/out/"
+        directory_path = "/Users/charlesmiele/Dropbox/miele/data/raw-json/"
         file_name = f"{company_id}.csv"
         csv_file_path = os.path.join(directory_path, file_name)
 
@@ -86,4 +83,6 @@ for index, row in url_list.iterrows():
 
 
 log_report.to_csv(
-    '/Users/charlesmiele/Dropbox/miele/measuring-founding-strategy-main/get_timestamps/log_report.csv')
+    '/Users/charlesmiele/Dropbox/miele/log-reports/json-log-report-06-13.csv')
+
+subprocess.call(["python3", "get_optimal_timestamps.py"])

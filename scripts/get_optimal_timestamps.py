@@ -14,7 +14,8 @@ script_path = os.path.abspath(__file__)
 script_path = os.path.dirname(script_path)
 
 # Import master url list
-url_list_path = os.path.join(script_path, '../data/startup_url_list.csv')
+url_list_path = os.path.join(
+    script_path, '../data/missing_jsons_executable.csv')
 url_list = pd.read_csv(url_list_path)
 
 # List all JSON files
@@ -82,9 +83,14 @@ for index, row in url_list.iterrows():
 
     # If the company has no start date, we can't use it
     if pd.isna(row.startdate):
-        add_log_row(company_id, domain, start_date=row.startdate, end_date=row.exit_date, earliest_screenshot="",
-                    latest_screenshot="", failed=1, reason_for_failure="Missing start date")
-        continue
+        if pd.isna(row.lastVC):
+            add_log_row(company_id, domain, start_date=row.startdate, end_date=row.exit_date, earliest_screenshot="",
+                        latest_screenshot="", failed=1, reason_for_failure="Missing start date and LastVC")
+            continue
+        else:
+            # Use lastVC as startdate
+            s_date = pd.to_datetime(row.lastVC) - \
+                pd.Timedelta(days=START_DATE_BUFFER)
     else:
         # Add buffer
         s_date = pd.to_datetime(row.startdate) - \
@@ -124,7 +130,6 @@ for index, row in url_list.iterrows():
     # This will contain final timestamps for use on "GET" script
     optimal_intervals = pd.Series(dtype="datetime64[ns]")
 
-    # TODO: Break this down for the reader
     # Iterate through each 6-month interval...
     for index, value in intervals.items():
         # If we're NOT at the final interval
@@ -159,4 +164,4 @@ for index, row in url_list.iterrows():
 
 # Export log report
 log_report.to_csv(os.path.join(
-    script_path, '../log-reports/optimal_timestamp_log_report.csv'), index=False)
+    script_path, '../log-reports/optimal_timestamp_log_report_finale_2.csv'), index=False)

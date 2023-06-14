@@ -1,0 +1,13 @@
+,entityid,domain,time_of_run,failed,reason_for_failure,file_path
+0,73229,www.google.com,2023-06-14 11:20:05,1,Timeout,
+1,105730,www.yahoo.com,2023-06-14 11:20:38,1,ConnectionError,
+2,105884,www.youtube.com,2023-06-14 11:21:18,1,ConnectionError,
+3,606430,www.pinterest.com,2023-06-14 11:21:21,1,ConnectionError,
+4,632036,www.reddit.com,2023-06-14 11:21:21,1,ConnectionError,
+5,651950,www.movielala.com,2023-06-14 11:21:24,1,403 Client Error: FORBIDDEN for url: https://web.archive.org/web/timemap/json?url=www.movielala.com/,
+6,653124,www.chain.com,2023-06-14 11:21:24,1,403 Client Error: FORBIDDEN for url: https://web.archive.org/web/timemap/json?url=www.chain.com/,
+7,661583,www.joinhonor.com,2023-06-14 11:21:24,1,403 Client Error: FORBIDDEN for url: https://web.archive.org/web/timemap/json?url=www.joinhonor.com/,
+8,726291,www.v-comply.com,2023-06-14 11:21:25,1,403 Client Error: FORBIDDEN for url: https://web.archive.org/web/timemap/json?url=www.v-comply.com/,
+9,1017116408,www.parting.com,2023-06-14 11:21:25,1,403 Client Error: FORBIDDEN for url: https://web.archive.org/web/timemap/json?url=www.parting.com/,
+10,1049485169,www.infiniblaze.com,2023-06-14 11:21:28,1,ConnectionError,
+11,1050087791,www.mntsmartsolutions.com,2023-06-14 11:21:33,1,NoJSON,

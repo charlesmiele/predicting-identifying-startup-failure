@@ -95,45 +95,6 @@ class waybackmachine_crawler:
             done_urls = self.add_done_url(
                 clean_url, 1, done_urls, timestamp, fail_reason="CE")
 
-        # Commenting this out for now because we're only looking at index.html for now
-        # counter = 0
-        '''
-        if levels > 0:
-
-            (domain, address) = self.split_wayback_url(clean_url)
-
-            soup = BeautifulSoup(html, features="html.parser")
-            for link in soup.findAll('a', attrs={'href': re.compile(domain)}):
-                url = link['href']
-                print("\t" + url)
-
-                # Skipping Conditions: Begin
-                if not url.startswith("http"):
-                    url = "http://web.archive.org" + url
-
-                if not self.is_valid_url(url):
-                    done_urls = self.add_done_url(url, 0, "GoDaddy", done_urls)
-                    print("\t .Skipped (not a valid url)")
-                    continue
-                elif url.endswith('.pdf'):
-                    done_urls = self.add_done_url(url, 0, "PDF", done_urls)
-
-                temp_clean_url = re.sub("\?.*", "", url)
-                temp_clean_url = re.sub(r"\#.*", "", temp_clean_url)
-
-                # if url not done.. Scrape it.
-                if self.url_done(url, done_urls) or self.url_done(temp_clean_url, done_urls):
-                    print("\t .Skipped (already done)")
-                else:
-                    counter += 1
-                    if counter >= 9:
-                        print("\t .10 links donwloaded for website. Done.")
-                        print("DONE", done_urls)
-                        break
-                    # Skipping Conditions: End
-                    done_urls = self.crawl(url, levels-1, done_urls)
-        '''
-
         return done_urls
 
     # Notes: If no year.. then stored under key value 0

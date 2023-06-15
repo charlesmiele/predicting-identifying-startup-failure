@@ -1,4 +1,4 @@
-from data_reader import data_reader
+import data_reader
 import codecs
 import re
 import requests
@@ -13,7 +13,6 @@ sys.path.append(os.path.abspath('../download'))
 
 
 class waybackmachine_crawler:
-
     def __init__(self, website, company_id, output_folder="out", year_folder=False):
         print("Looking at new website {0}...".format(website))
         self.website = website
@@ -71,7 +70,7 @@ class waybackmachine_crawler:
 
         return True
 
-    def crawl(self, wayback_url, timestamp, levels=1, done_urls={}):
+    def crawl(self, wayback_url, timestamp, levels=1):
         # Recursive algorithm
         # print("\t .Crawl [L={0}].. {1}".format(levels, wayback_url))
 
@@ -88,14 +87,12 @@ class waybackmachine_crawler:
             file_path = self.store_page(clean_url, html)
             done_urls = self.add_done_url(
                 clean_url, 0, done_urls, timestamp, fp=file_path)
+            return True
         except ConnectionError as e:
             # Be careful with this...how do we know for sure...
             # log
             print("Connection Error: Skipping")
-            done_urls = self.add_done_url(
-                clean_url, 1, done_urls, timestamp, fail_reason="CE")
-
-        return done_urls
+            return False
 
     # Notes: If no year.. then stored under key value 0
 

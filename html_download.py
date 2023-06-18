@@ -6,18 +6,40 @@ import requests
 import codecs
 import pdb
 from requests.exceptions import ConnectionError
+import sys
+import filter_downloaded_html as fdh
+import numpy as np
 
+
+# Read environment variables
+# i = int(os.getenv('SGE_TASK_ID'))
+i = 5
+# range_i = int(os.getenv('SGE_TASK_LAST') -
+#   int(os.getenv('SGE_TASK_FIRST'))) + 1
+range_i = 5 - 1 + 1
+
+# Read data
 url_list = pd.read_csv('data/startup_url_list.csv')
 timestamp_list = os.listdir('data/optimal-timestamps')
 timestamp_list = [int(file[:-15]) for file in timestamp_list]
-url_list = url_list[url_list.entityid.isin(timestamp_list)]
-url_list = url_list.sample(3)
 
-finished_cos = []
+# Find already finished, take them out
+already_finished = fdh.main()
+url_list = url_list[(url_list.entityid.isin(timestamp_list)) & (
+    url_list.entityid.isin(already_finished) == False)]
 
-already_crawled = []
+# Calculate given interval
+num_urls = len(url_list.index)
+intervals = np.linspace(0, num_urls, range_i + 1)
+intervals = intervals.astype(int).tolist()
 
-# TODO: Think more about this
+start = intervals[i - 1]
+finish = intervals[i]
+
+url_list = url_list.iloc[start:finish]
+
+
+lr_path = f"log-reports/lp_p_{i}.csv"
 
 lr_columns = [
     'entityid',
@@ -31,7 +53,6 @@ lr_columns = [
     'file_path'
 ]
 
-lr_path = 'log-reports/html_master_log_report.csv'
 if os.path.isfile(lr_path):
     log_report = pd.read_csv(lr_path)
 else:
@@ -95,7 +116,7 @@ for index, row in url_list.iterrows():
 
         try:
             # GET request
-            response = requests.get(url)
+            response = requests.get(url, timeout=10)
             # Store HTML contents
             html = response.text
             # Store page
@@ -104,14 +125,16 @@ for index, row in url_list.iterrows():
             print("Downloaded", t)
             add_log_row(company_id, domain, t, url, file_path=file_path)
         except ConnectionError as e:
-            print(e)
             # Add to log file as a failure
-            print("Could not download", t)
+            print("Could not download", t, ": ConnectionError")
             add_log_row(company_id, domain, t, url, failed=1,
-                        reason_for_failure="Connection Error", failure_description=e)
+                        reason_for_failure="Connection Error", failure_description=e.response)
+        except requests.exceptions.Timeout as e:
+            print("Could not download", t, ": Timout")
+            add_log_row(company_id, domain, t, url, failed=1,
+                        reason_for_failure="Timeout Error", failure_description=e.response)
 
     print("Finished", company_id)
-
 
 # Export log report to CSV
 log_report.to_csv(lr_path, index=False)

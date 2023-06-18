@@ -8,6 +8,7 @@ import pdb
 from requests.exceptions import ConnectionError
 import sys
 import filter_downloaded_html as fdh
+import downloaded_6_18
 import numpy as np
 
 
@@ -24,7 +25,8 @@ timestamp_list = os.listdir('data/optimal-timestamps')
 timestamp_list = [int(file[:-15]) for file in timestamp_list]
 
 # Find already finished, take them out
-already_finished = fdh.main()
+# --This is hardcoded for now to prevent any bugs--
+already_finished = downloaded_6_18.companies
 url_list = url_list[(url_list.entityid.isin(timestamp_list)) & (
     url_list.entityid.isin(already_finished) == False)]
 
@@ -83,7 +85,8 @@ def store_page(entityid, year, month):
     base_directory = f"data/html/{entityid}/{year}/{month}"
 
     if not os.path.exists(base_directory):
-        os.makedirs(base_directory)
+        # TODO: Clean this up...I shouldn't have to add that exist_ok argument...
+        os.makedirs(base_directory, exist_ok=True)
 
     file_path = f"{base_directory}/index.html"
 

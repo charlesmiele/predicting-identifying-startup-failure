@@ -5,10 +5,9 @@ import os
 import requests
 import codecs
 import pdb
-from requests.exceptions import ConnectionError
 import sys
 import filter_downloaded_html as fdh
-import downloaded_6_18
+import downloaded_6_20 as downloaded
 import numpy as np
 
 
@@ -26,7 +25,7 @@ timestamp_list = [int(file[:-15]) for file in timestamp_list]
 
 # Find already finished, take them out
 # --This is hardcoded for now to prevent any bugs--
-already_finished = downloaded_6_18.companies
+already_finished = downloaded.companies
 url_list = url_list[(url_list.entityid.isin(timestamp_list)) & (
     url_list.entityid.isin(already_finished) == False)]
 
@@ -127,15 +126,25 @@ for index, row in url_list.iterrows():
             # Add to log file as success
             print("Downloaded", t)
             add_log_row(company_id, domain, t, url, file_path=file_path)
-        except ConnectionError as e:
+        except requests.exceptions.ConnectionError as e:
             # Add to log file as a failure
             print("Could not download", t, ": ConnectionError")
             add_log_row(company_id, domain, t, url, failed=1,
-                        reason_for_failure="Connection Error", failure_description=e.response)
+                        reason_for_failure="Connection Error", failure_description=e)
         except requests.exceptions.Timeout as e:
             print("Could not download", t, ": Timout")
             add_log_row(company_id, domain, t, url, failed=1,
-                        reason_for_failure="Timeout Error", failure_description=e.response)
+                        reason_for_failure="Timeout Error", failure_description=e)
+        except requests.exceptions.ChunkedEncodingError as e:
+            print("Could not download", t, ": CEE")
+            add_log_row(company_id, domain, t, url, failed=1,
+                        reason_for_failure="Chunked Encoding Error", failure_description=e)
+            time.sleep(10)
+        except Exception as e:
+            print("Could not download", t, ": Unknown")
+            add_log_row(company_id, domain, t, url, failed=1,
+                        reason_for_failure="Chunked Encoding Error", failure_description=e)
+            time.sleep(10)
 
     print("Finished", company_id)
 

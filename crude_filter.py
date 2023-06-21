@@ -9,6 +9,9 @@ def main():
     for company in co_list:
         finished_cos.append(int(company))
 
+    df = pd.DataFrame(finished_cos, columns=['entityid'])
+    df.to_csv('downloaded_6_20.csv')
+
     return finished_cos
 
 

@@ -7,7 +7,7 @@ import codecs
 import pdb
 import sys
 import filter_downloaded_html as fdh
-import downloaded_6_20 as downloaded
+import data.downloaded_6_20 as downloaded
 import numpy as np
 
 

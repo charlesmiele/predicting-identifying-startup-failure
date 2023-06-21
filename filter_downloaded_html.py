@@ -4,8 +4,11 @@ import pandas as pd
 
 
 def main():
-    co_list = os.listdir('data/html')
+
+    co_list = [f for f in os.listdir('data/html') if not f.startswith('.')]
     finished_cos = []
+    partially_finished = []
+
     for company in co_list:
         timestamps = pd.read_csv(
             f"data/optimal-timestamps/{company}_timestamps.csv")
@@ -23,6 +26,17 @@ def main():
 
         if len(remaining_timestamps) == 0:
             finished_cos.append(int(company))
+        else:
+            partially_finished.append(len(remaining_timestamps))
+
+    # Summary
+    print(len(finished_cos), "companies are completely finished")
+    print("In ratio form:", len(finished_cos) / len(co_list))
+
+    print(
+        f"On average, companies with remaining timestamps are missing {sum(partially_finished) / len(partially_finished)}")
+
+    # TODO: Export lingering timestamps to a CSV
 
     return finished_cos
 

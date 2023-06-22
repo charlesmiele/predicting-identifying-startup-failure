@@ -6,17 +6,13 @@ import requests
 import codecs
 import pdb
 import sys
-import filter_downloaded_html as fdh
-import data.downloaded_6_20 as downloaded
 import numpy as np
 
 
 # Read environment variables
-# i = int(os.getenv('SGE_TASK_ID'))
-i = 5
-# range_i = int(os.getenv('SGE_TASK_LAST') -
-#   int(os.getenv('SGE_TASK_FIRST'))) + 1
-range_i = 5 - 1 + 1
+i = int(os.getenv('SGE_TASK_ID'))
+range_i = int(os.getenv('SGE_TASK_LAST')) - \
+    int(os.getenv('SGE_TASK_FIRST')) + 1
 
 # Read data
 url_list = pd.read_csv('data/startup_url_list.csv')
@@ -25,7 +21,8 @@ timestamp_list = [int(file[:-15]) for file in timestamp_list]
 
 # Find already finished, take them out
 # --This is hardcoded for now to prevent any bugs--
-already_finished = downloaded.companies
+already_finished = [f for f in os.listdir(
+    'data/html') if not f.startswith('.')]
 url_list = url_list[(url_list.entityid.isin(timestamp_list)) & (
     url_list.entityid.isin(already_finished) == False)]
 
@@ -34,11 +31,14 @@ num_urls = len(url_list.index)
 intervals = np.linspace(0, num_urls, range_i + 1)
 intervals = intervals.astype(int).tolist()
 
+
 start = intervals[i - 1]
 finish = intervals[i]
-
 url_list = url_list.iloc[start:finish]
 
+# Wait one minute to let all the other parallelized scripts catch up...
+print("Scraping", start, "to", finish)
+time.sleep(60)
 
 lr_path = f"log-reports/lp_p_{i}.csv"
 
@@ -131,6 +131,7 @@ for index, row in url_list.iterrows():
             print("Could not download", t, ": ConnectionError")
             add_log_row(company_id, domain, t, url, failed=1,
                         reason_for_failure="Connection Error", failure_description=e)
+            time.sleep(10)
         except requests.exceptions.Timeout as e:
             print("Could not download", t, ": Timout")
             add_log_row(company_id, domain, t, url, failed=1,
@@ -140,10 +141,14 @@ for index, row in url_list.iterrows():
             add_log_row(company_id, domain, t, url, failed=1,
                         reason_for_failure="Chunked Encoding Error", failure_description=e)
             time.sleep(10)
-        except Exception as e:
+        except requests.exceptions.TooManyRedirects as e:
+            print("Could not download", t, ": Too  Many Redirects")
+            add_log_row(company_id, domain, t, url, failed=1,
+                        reason_for_failure="Too many redirects", failure_description=e)
+        except:
             print("Could not download", t, ": Unknown")
             add_log_row(company_id, domain, t, url, failed=1,
-                        reason_for_failure="Chunked Encoding Error", failure_description=e)
+                        reason_for_failure="Unknown")
             time.sleep(10)
 
     print("Finished", company_id)

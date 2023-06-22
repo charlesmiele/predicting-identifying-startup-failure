@@ -4,7 +4,6 @@ import pandas as pd
 
 
 def main():
-
     co_list = [f for f in os.listdir('data/html') if not f.startswith('.')]
     finished_cos = []
     partially_finished = []
@@ -37,7 +36,6 @@ def main():
         f"On average, companies with remaining timestamps are missing {sum(partially_finished) / len(partially_finished)}")
 
     # TODO: Export lingering timestamps to a CSV
-
     return finished_cos
 
 

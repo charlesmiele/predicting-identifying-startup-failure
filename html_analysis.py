@@ -1,7 +1,6 @@
 import pandas as pd
 import os
 from bs4 import BeautifulSoup
-import pprint as pp
 
 # Read in data
 url_list = pd.read_csv('data/startup_url_list.csv')
@@ -15,16 +14,17 @@ already_finished_crude = [int(f) for f in os.listdir(
 url_list = url_list[(url_list.entityid.isin(timestamp_list)) & (
     url_list.entityid.isin(already_finished_crude) == True)]
 
-# Select founding year
-url_list['startyear'] = url_list.startdate.str.slice(start=0, stop=4)
-# Which years have a lot of companies?
-url_list['startyear'].value_counts()
-
-# Filter on popular founding year
+# Sort by founding year
+url_list['startyear'] = url_list.startdate.str.slice(
+    start=0, stop=4)
+url_list['startyear'] = url_list['startyear'].fillna(
+    url_list['lastVC'].str.slice(start=0, stop=4))
+url_list['startyear'] = url_list['startyear'].astype('int16')
+url_list = url_list.sort_values('startyear')
 
 
 # Create empty df
-columns = ['entityid', 'domain', 'capture_yr', 'capture_m', 'time_from_start_m',
+columns = ['entityid', 'domain', 'founded_yr', 'capture_yr', 'capture_m', 'time_from_start_m',
            'website_size_kb', 'title', 'num_a_tags', 'a_innertext', 'meta_description', 'meta_keywords']
 webpage_metadata = pd.DataFrame(columns=columns)
 
@@ -34,7 +34,7 @@ webpage_metadata = pd.DataFrame(columns=columns)
 
 def get_htmls(company, base_path):
     global webpage_metadata
-    entityid = company['entityid']
+    entityid = str(company['entityid'])
     domain = company['weburl']
     start_date = pd.to_datetime(company['startdate'])
     htmls = []
@@ -47,7 +47,8 @@ def get_htmls(company, base_path):
             if os.path.isfile(index_path):
                 # Get time from start date (in months)
                 time_from_start_m = 12 * \
-                    (year - start_date.year) + (month - start_date.month)
+                    (int(year) - start_date.year) + \
+                    (int(month) - start_date.month)
                 # Get file size (kb)
                 website_size_kb = os.stat(index_path).st_size / 1024
                 with open(index_path, 'r') as file:
@@ -60,9 +61,13 @@ def get_htmls(company, base_path):
                     for a_tag in a_tags:
                         at_txt = str(a_tag.text)
                         at_txt = at_txt.replace("\n", "")
+                        at_txt = at_txt.replace("\t", "")
+                        at_txt = at_txt.strip()
                         if at_txt != "":
                             a_inner_texts.append(at_txt)
-                    page_title = soup.title.text
+
+                    page_title = soup.title
+                    page_title_text = page_title.text if page_title != None else ""
                     htmls.append(soup)
                     has_meta_description_tag = (
                         soup.find('meta', attrs={'name': 'description'}) is not None)
@@ -71,23 +76,29 @@ def get_htmls(company, base_path):
                     data_to_add = {
                         'entityid': entityid,
                         'domain': domain,
-                        'capture_yr': year,
-                        'capture_m': month,
+                        'founded_yr': company['startyear'],
+                        'capture_yr': int(year),
+                        'capture_m': int(month),
                         'time_from_start_m': time_from_start_m,
                         'website_size_kb': website_size_kb,
-                        'title': page_title,
+                        'title': page_title_text,
                         'num_a_tags': num_a_tags,
                         'a_innertext': a_inner_texts,
                         'meta_description': int(has_meta_description_tag),
                         'meta_keywords': int(has_meta_keywords_tag)
                     }
-                    print("Adding:", pp.pprint(data_to_add))
                     webpage_metadata = webpage_metadata.append(
                         data_to_add, ignore_index=True)
 
 
 base_path = "data/html"
-companies = url_list.entityid.astype(str)
+
 
 for index, row in url_list.iterrows():
     get_htmls(row, base_path)
+    print(row.entityid)
+
+webpage_metadata = webpage_metadata.sort_values(
+    by=['entityid', 'capture_yr', 'capture_m'])
+
+webpage_metadata.to_csv('data/webpage_metadata.csv', index=False)

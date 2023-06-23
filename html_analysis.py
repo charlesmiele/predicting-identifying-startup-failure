@@ -101,4 +101,6 @@ for index, row in url_list.iterrows():
 webpage_metadata = webpage_metadata.sort_values(
     by=['entityid', 'capture_yr', 'capture_m'])
 
+webpage_metadata = pd.merge(webpage_metadata, url_list, on='entityid')
+
 webpage_metadata.to_csv('data/webpage_metadata.csv', index=False)

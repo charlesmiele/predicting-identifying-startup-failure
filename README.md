@@ -1,6 +1,6 @@
 # predicting-identifying-startup-failure
 
-This is code by Charles Miele. The Python scripts you that are in the main directory are the most important ones.
+All code is by Charles Miele. The Python scripts you that are in the main directory are the most important ones.
 
 `analysis` includes Jupyter notebooks that are used to analyze the HTML data report created by `html_analysis.py`
 

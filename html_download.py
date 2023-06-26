@@ -101,8 +101,6 @@ for index, row in url_list.iterrows():
     domain = row['weburl']
     company_id = int(row['entityid'])
 
-    print(company_id, "is up")
-
     # Load in optimal timestamps for current company
     timestamps = pd.read_csv(
         f"data/optimal-timestamps/{company_id}_timestamps.csv")
@@ -115,45 +113,30 @@ for index, row in url_list.iterrows():
         year = t[:4]
         month = t[4:6]
         url = f"https://web.archive.org/web/{t}/{domain}"
-
         try:
             # GET request
             response = requests.get(url, timeout=10)
-            # Store HTML contents
-            html = response.text
-            # Store page
-            file_path = store_page(company_id, year, month)
-            # Add to log file as success
-            print("Downloaded", t)
-            add_log_row(company_id, domain, t, url, file_path=file_path)
-        except requests.exceptions.ConnectionError as e:
+
+            if response.status_code != 200:
+                if response.status_code == 429:
+                    time.sleep(30)
+                add_log_row(company_id, domain, t, url, failed=1,
+                            reason_for_failure=str(response.status_code))
+                continue
+        except requests.exceptions.RequestException as e:
+            failure_description = str(e)
             # Add to log file as a failure
-            print("Could not download", t, ": ConnectionError")
             add_log_row(company_id, domain, t, url, failed=1,
-                        reason_for_failure="Connection Error", failure_description=e)
-            time.sleep(10)
-        except requests.exceptions.Timeout as e:
-            print("Could not download", t, ": Timout")
-            add_log_row(company_id, domain, t, url, failed=1,
-                        reason_for_failure="Timeout Error", failure_description=e)
-        except requests.exceptions.ChunkedEncodingError as e:
-            print("Could not download", t, ": CEE")
-            add_log_row(company_id, domain, t, url, failed=1,
-                        reason_for_failure="Chunked Encoding Error", failure_description=e)
-            time.sleep(10)
-        except requests.exceptions.TooManyRedirects as e:
-            print("Could not download", t, ": Too  Many Redirects")
-            add_log_row(company_id, domain, t, url, failed=1,
-                        reason_for_failure="Too many redirects", failure_description=e)
-        except:
-            print("Could not download", t, ": Unknown")
-            add_log_row(company_id, domain, t, url, failed=1,
-                        reason_for_failure="Unknown")
-            time.sleep(10)
+                        reason_for_failure="Connection Error", failure_description=failure_description)
+            continue
 
-    print("Finished", company_id)
+        # ---STORE EVERYTHING---
+        # Store HTML contents
+        html = response.text
+        # Store page
+        file_path = store_page(company_id, year, month)
+        # Add to log file as success
+        add_log_row(company_id, domain, t, url, file_path=file_path)
 
-# Export log report to CSV
-log_report.to_csv(lr_path, index=False)
-
-print("Exported log report")
+        # Export log report to CSV
+        log_report.to_csv(lr_path, index=False)

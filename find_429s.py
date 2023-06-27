@@ -3,11 +3,11 @@ import os
 from bs4 import BeautifulSoup
 import pdb
 
-errorTxt = '429 Too Many Requests\nYou have sent too many requests in a given amount of time.\n\n'
+errorTxt = "429 Too Many Requests\nYou have sent too many requests in a given amount of time.\n\n"
 
 # Create empty DF
 lr_columns = ['entityid', 'error', 'filepath']
-lr = pd.DataFrame(columns=[])
+lr = pd.DataFrame(columns=lr_columns)
 
 overall_count = 0
 missing_429 = 0
@@ -46,7 +46,7 @@ for company in co_list:
                 {'enityid': company, 'error': 1, 'filepath': index_path}, ignore_index=True)
             missing_file += 1
 
-lr.to_csv('data/missing_429s.csv')
+lr.to_csv('data/missing_429s.csv', index=False)
 
 # Summary statistics
 pdb.set_trace()

@@ -36,6 +36,11 @@ def main():
         f"On average, companies with remaining timestamps are missing {sum(partially_finished) / len(partially_finished)}")
 
     # TODO: Export lingering timestamps to a CSV
+
+    # TODO: Export completely finished companies to a CSV that I can read in
+    finished_cos = pd.Series(finished_cos)
+    finished_cos.to_csv('log-reports/completely_finished.csv')
+
     return finished_cos
 
 

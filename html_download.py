@@ -20,7 +20,8 @@ timestamp_list = os.listdir('data/optimal-timestamps')
 timestamp_list = [int(file[:-15]) for file in timestamp_list]
 
 # Find already finished, take them out
-# --This is hardcoded for now to prevent any bugs--
+# This is also done in a "lazy"/crude way for now,
+# we'll handle previously missed timestamps later...
 already_finished = [f for f in os.listdir(
     'data/html') if not f.startswith('.')]
 url_list = url_list[(url_list.entityid.isin(timestamp_list)) & (

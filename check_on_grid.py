@@ -14,8 +14,8 @@ for log in list_of_logs:
     print(list_of_logs.index(log) + 1)
     print("Failed:", failed)
     # Reasons for failure
-    # fr = df[df['failed'] == 1]['reason_for_failure'].value_counts
-    # print("Reasons:")
-    # print(fr.to_string())
+    fr = df[df['failed'] == 1]['reason_for_failure'].value_counts()
+    print("Reasons:")
+    print(fr)
     print("Successes:", len(df.index) - failed)
     print("Total:", len(df.index))

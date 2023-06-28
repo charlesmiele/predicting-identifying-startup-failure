@@ -1,15 +1,22 @@
 import pandas as pd
 import os
 from bs4 import BeautifulSoup
+import pdb
+import numpy as np
 
-errortxt_429 = "429 Too Many Requests\nYou have sent too many requests in a given amount of time.\n\n"
+
+# Read environment variables
+i = int(os.getenv('SGE_TASK_ID'))
+range_i = int(os.getenv('SGE_TASK_LAST')) - \
+    int(os.getenv('SGE_TASK_FIRST')) + 1
+
+OUTPUT_PATH = f"data/{i}_revised_webpage_metadata.csv"
 
 # Read data
 url_list = pd.read_csv('data/startup_url_list.csv')
 timestamp_list = os.listdir('data/optimal-timestamps')
 timestamp_list = [int(file[:-15]) for file in timestamp_list]
-faulty_htmls = pd.read_csv('data/missing_429s.csv')
-faulty_htmls = faulty_htmls[faulty_htmls.error == 0.0]['filepath']
+
 already_finished_crude = [int(f) for f in os.listdir(
     'data/html') if not f.startswith('.')]
 url_list = url_list[(url_list.entityid.isin(timestamp_list)) & (
@@ -21,6 +28,17 @@ url_list['startyear'] = url_list['startyear'].fillna(
 url_list['startyear'] = url_list['startyear'].astype('int16')
 url_list = url_list.sort_values('startyear')
 
+# Only select companies founded after 1996
+url_list = url_list[url_list['startyear'] >= 1996]
+# Calculate given interval
+num_urls = len(url_list.index)
+intervals = np.linspace(0, num_urls, range_i + 1)
+intervals = intervals.astype(int).tolist()
+start = intervals[i - 1]
+finish = intervals[i]
+url_list = url_list.iloc[start:finish]
+print("Scraping indicies", start, "to", finish)
+
 # Create empty df
 columns = [
     'entityid',
@@ -29,9 +47,20 @@ columns = [
     'file_path',
     'file_exists',
     'is_429',
+    'is_parsable',
     'website_size_kb',
     'text_array',
     'a_dict',
+    'careers',
+    'blog',
+    'login',
+    'contact',
+    'team',
+    'about',
+    'news',
+    'faq',
+    'call_to_action',
+    'testimonial',
     'title',
     'description',
     'keywords',
@@ -49,18 +78,39 @@ columns = [
 ]
 webpage_metadata = pd.DataFrame(columns=columns)
 
+# These are used later
+section_indicators = {
+    'careers': ["job", "jobs", "career", "careers", "join our team", "join us", "employment opportunities", "career opportunities"],
+    'blog': ["blog", "our blog", "latest articles", "blog posts", "news and updates", "insights", "insights and opinions"],
+    'login': ["login", "log in", "forgot password", "sign in ", "signin", "member login"],
+    'contact': ["contact", "contact us", "get in touch", "reah out", "contact information"],
+    'team': ["team", "our team", "meet the team", "team members", "our staff"],
+    'about': ["about us", "about", "our story", "about our company", "mission and vision"],
+    'news': ["news", "stories", "in the press", "press", "press releases", "media coverage", "company updates"],
+    'faq': ["faq", "frequently asked questions", "questions", "help and support", "common queries", "common questions"],
+    'call_to_action': ["sign up today", "sign up", "join", "request a demo", "download", "try for free", "learn more", "get started"],
+    'testimonial': ["testimonials", "what people say", "what our clients say", "client testimonials", "customer reviews", "reviews", "success stories"]
+}
+errortxt_429 = "429 Too Many Requests\nYou have sent too many requests in a given amount of time.\n\n"
+
 
 def add_big(soup, data):
     # General text array
+    # TODO: Removing this for now because it takes up too much space...
     text_array = [text for text in soup.stripped_strings]
     data['text_array'] = text_array
+    remaining_section_indicators = section_indicators
 
     # <a> dictionary
     a_dict = {}
     a_tags = soup.find_all('a')
     for a_tag in a_tags:
         href = a_tag.get('href')
-        text = a_tag.text.strip()
+        text = a_tag.text.strip(' */,.?!')
+        for s in list(remaining_section_indicators):
+            if text in remaining_section_indicators[s]:
+                data[s] = 1
+                del remaining_section_indicators[s]
         a_dict[href] = text
 
     data['a_dict'] = a_dict
@@ -70,19 +120,39 @@ def add_big(soup, data):
 def small_qualitative(soup, data):
     # title
     title = soup.find('title')
-    data['title'] = title.string if title else None
+    if title:
+        try:
+            data['title'] = title.string
+        except KeyError:
+            data['title'] = None
     # meta description
     description = soup.find('meta', attrs={'name': 'description'})
-    data['description'] = description['content'] if description else None
+    if description:
+        try:
+            data['description'] = description['content']
+        except KeyError:
+            data['description'] = None
     # meta keywords
-    keywords = soup.find('meta', attrs={'name': 'description'})
-    data['keywords'] = keywords['content'] if keywords else None
+    keywords = soup.find('meta', attrs={'name': 'keywords'})
+    if keywords:
+        try:
+            data['keywords'] = keywords['content']
+        except KeyError:
+            data['keywords'] = None
     # author
     author = soup.find('meta', attrs={'name': 'author'})
-    data['author'] = author['content'] if author else None
+    if author:
+        try:
+            data['author'] = author['content']
+        except KeyError:
+            data['author'] = None
     # language
     html_tag = soup.find('html')
-    data['language'] = html_tag.get('lang') if html_tag else None
+    if html_tag:
+        try:
+            data['language'] = html_tag.get('lang')
+        except KeyError:
+            data['language'] = None
     return data
 
 
@@ -120,34 +190,47 @@ def misc_boolean(soup, data):
 
 
 def get_htmls(company, base_path):
+    # A HTML page is a "success" if all of these get filled out with some value...
     data = {
         'entityid': str(company['entityid']),
         'capture_yr': None,
         'capture_m': None,
-        'file_path': None,
-        'file_exists': True,
-        'is_429': False,
+        'file_path': "",
+        'file_exists': 1,
+        'is_429': 0,
+        'is_parsable': 1,
 
-        'website_size_kb': None,
+        'website_size_kb': 0,
         'text_array': None,
         'a_dict': None,
 
-        'title': None,
-        'description': None,
-        'keywords': None,
-        'author': None,
-        'language': None,
+        'careers': 0,
+        'blog': 0,
+        'login': 0,
+        'contact': 0,
+        'team': 0,
+        'about': 0,
+        'news': 0,
+        'faq': 0,
+        'call_to_action': 0,
+        'testimonial': 0,
 
-        'p_count': None,
-        'h_count': None,
-        'img_count': None,
-        'a_count': None,
-        'table_count': None,
-        'form_count': None,
-        'script_count': None,
+        'title': "",
+        'description': "",
+        'keywords': "",
+        'author': "",
+        'language': "",
 
-        'embedded_js': None,
-        'external_js': None
+        'p_count': 0,
+        'h_count': 0,
+        'img_count': 0,
+        'a_count': 0,
+        'table_count': 0,
+        'form_count': 0,
+        'script_count': 0,
+
+        'embedded_js': 0,
+        'external_js': 0
     }
     global webpage_metadata
 
@@ -172,25 +255,31 @@ def get_htmls(company, base_path):
                 data['website_size_kb'] = os.stat(
                     index_path).st_size / 1024
 
-                # Finally open the file
+                # (Finally) open the file
                 with open(index_path, 'r') as file:
                     html_content = file.read()
-                    soup = BeautifulSoup(html_content, 'html.parser')
+                    try:
+                        soup = BeautifulSoup(html_content, 'html.parser')
+                    except UnboundLocalError:
+                        data['is_parsable'] = 0
+                        continue
                     soup_str = soup.get_text()
                     if soup_str == errortxt_429:
-                        data['is_429'] = True
+                        data['is_429'] = 1
                         continue
 
                     # Parse HTML, produce more variables
+                    # TODO: This is getting commented out for now...come up with a solution later.
                     data = add_big(soup, data)
                     data = small_qualitative(soup, data)
                     data = small_quant(soup, data)
                     data = misc_boolean(soup, data)
             else:
-                data['file_exists'] = False
-            webpage_metadata = webpage_metadata.append(
-                data, ignore_index=True)
-            print("Analyzed", data['file_path'])
+                data['file_exists'] = 0
+            # Append data
+            webpage_metadata = webpage_metadata.append(data, ignore_index=True)
+
+            webpage_metadata.to_csv(OUTPUT_PATH, index=False)
 
 
 base_path = "data/html"
@@ -204,9 +293,8 @@ for index, row in url_list.iterrows():
 webpage_metadata = webpage_metadata.sort_values(
     by=['entityid', 'capture_yr', 'capture_m'])
 
-# FINAL STEP!
+# FINAL STEP
 # TODO: Fix this bug
 # webpage_metadata = pd.merge(webpage_metadata, url_list, on='entityid')
 
-# TODO: THIS FILE PATH IS TEMPORARY
-webpage_metadata.to_csv('data/revised_webpage_metadata.csv', index=False)
+webpage_metadata.to_csv(OUTPUT_PATH, index=False)

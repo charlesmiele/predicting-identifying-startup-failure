@@ -4,8 +4,6 @@ import time
 import os
 import requests
 import codecs
-import pdb
-import sys
 import numpy as np
 
 
@@ -16,16 +14,9 @@ range_i = int(os.getenv('SGE_TASK_LAST')) - \
 
 # Read data
 url_list = pd.read_csv('data/startup_url_list.csv')
-timestamp_list = os.listdir('data/optimal-timestamps')
-timestamp_list = [int(file[:-15]) for file in timestamp_list]
+not_started = pd.read_csv('log-reports/not-started.csv')
+url_list = url_list[url_list.entityid.isin(not_started['entityid'])]
 
-# Find already finished, take them out
-# This is also done in a "lazy"/crude way for now,
-# we'll handle previously missed timestamps later...
-already_finished = [f for f in os.listdir(
-    'data/html') if not f.startswith('.')]
-url_list = url_list[(url_list.entityid.isin(timestamp_list)) & (
-    url_list.entityid.isin(already_finished) == False)]
 
 # Calculate given interval
 num_urls = len(url_list.index)
@@ -128,8 +119,13 @@ for index, row in url_list.iterrows():
             failure_description = str(e)
             # Add to log file as a failure
             add_log_row(company_id, domain, t, url, failed=1,
-                        reason_for_failure="Connection Error", failure_description=failure_description)
+                        reason_for_failure="Request Exception", failure_description=failure_description)
             continue
+        except AttributeError as e:
+            failure_description = str(e)
+            # Add to log file as a failure
+            add_log_row(company_id, domain, t, url, failed=1,
+                        reason_for_failure="Attribute Error", failure_description=failure_description)
 
         # ---STORE EVERYTHING---
         # Store HTML contents

@@ -6,11 +6,14 @@ import numpy as np
 
 
 # Read environment variables
+'''
 i = int(os.getenv('SGE_TASK_ID'))
 range_i = int(os.getenv('SGE_TASK_LAST')) - \
     int(os.getenv('SGE_TASK_FIRST')) + 1
 
-OUTPUT_PATH = f"data/{i}_revised_webpage_metadata.csv"
+OUTPUT_PATH = f"data/analysis-3/{i}_revised_webpage_metadata.csv"
+'''
+OUTPUT_PATH = f"data/analysis-3-sample.csv"
 
 # Read data
 url_list = pd.read_csv('data/startup_url_list.csv')
@@ -21,16 +24,22 @@ already_finished_crude = [int(f) for f in os.listdir(
     'data/html') if not f.startswith('.')]
 url_list = url_list[(url_list.entityid.isin(timestamp_list)) & (
     url_list.entityid.isin(already_finished_crude) == True)]
+url_list['startdate'] = url_list['startdate'].fillna(url_list['lastVC'])
 url_list['startyear'] = url_list.startdate.str.slice(
     start=0, stop=4)
-url_list['startyear'] = url_list['startyear'].fillna(
-    url_list['lastVC'].str.slice(start=0, stop=4))
 url_list['startyear'] = url_list['startyear'].astype('int16')
 url_list = url_list.sort_values('startyear')
 
 # Only select companies founded after 1996
 url_list = url_list[url_list['startyear'] >= 1996]
+
+# TODO: This is temporary
+completely_finished = pd.read_csv('log-reports/completely-finished.csv')
+url_list = url_list[url_list.entityid.isin(completely_finished.entityid)]
+url_list = url_list.sample(100)
+
 # Calculate given interval
+'''
 num_urls = len(url_list.index)
 intervals = np.linspace(0, num_urls, range_i + 1)
 intervals = intervals.astype(int).tolist()
@@ -38,19 +47,17 @@ start = intervals[i - 1]
 finish = intervals[i]
 url_list = url_list.iloc[start:finish]
 print("Scraping indicies", start, "to", finish)
+'''
 
 # Create empty df
 columns = [
     'entityid',
+    'yr_from_start',
     'capture_yr',
     'capture_m',
     'file_path',
     'file_exists',
-    'is_429',
-    'is_parsable',
     'website_size_kb',
-    'text_array',
-    'a_dict',
     'careers',
     'blog',
     'login',
@@ -61,11 +68,11 @@ columns = [
     'faq',
     'call_to_action',
     'testimonial',
+
     'title',
     'description',
     'keywords',
-    'author',
-    'language',
+
     'p_count',
     'h_count',
     'img_count',
@@ -73,8 +80,6 @@ columns = [
     'table_count',
     'form_count',
     'script_count',
-    'embedded_js',
-    'external_js'
 ]
 webpage_metadata = pd.DataFrame(columns=columns)
 
@@ -95,14 +100,12 @@ errortxt_429 = "429 Too Many Requests\nYou have sent too many requests in a give
 
 
 def add_big(soup, data):
-    # General text array
-    # TODO: Removing this for now because it takes up too much space...
-    text_array = [text for text in soup.stripped_strings]
-    data['text_array'] = text_array
-    remaining_section_indicators = section_indicators
+    global section_indicators
 
-    # <a> dictionary
-    a_dict = {}
+    remaining_section_indicators = section_indicators.copy()
+
+    # Fill in any indicators
+
     a_tags = soup.find_all('a')
     for a_tag in a_tags:
         href = a_tag.get('href')
@@ -111,48 +114,51 @@ def add_big(soup, data):
             if text.lower() in remaining_section_indicators[s]:
                 data[s] = 1
                 del remaining_section_indicators[s]
-        a_dict[href] = text
 
-    data['a_dict'] = a_dict
     return data
 
 
 def small_qualitative(soup, data):
     # title
     title = soup.find('title')
+    description = soup.find('meta', attrs={'name': 'description'})
+    keywords = soup.find('meta', attrs={'name': 'keywords'})
+    data['title'] = int(title != None)
+    data['description'] = int(description != None)
+    data['keywords'] = int(keywords != None)
+    '''
+    author = soup.find('meta', attrs={'name': 'author'})
+    html_tag = soup.find('html')
     if title:
         try:
             data['title'] = title.string
         except KeyError:
             data['title'] = None
     # meta description
-    description = soup.find('meta', attrs={'name': 'description'})
     if description:
         try:
             data['description'] = description['content']
         except KeyError:
             data['description'] = None
     # meta keywords
-    keywords = soup.find('meta', attrs={'name': 'keywords'})
     if keywords:
         try:
             data['keywords'] = keywords['content']
         except KeyError:
             data['keywords'] = None
     # author
-    author = soup.find('meta', attrs={'name': 'author'})
     if author:
         try:
             data['author'] = author['content']
         except KeyError:
             data['author'] = None
     # language
-    html_tag = soup.find('html')
     if html_tag:
         try:
             data['language'] = html_tag.get('lang')
         except KeyError:
             data['language'] = None
+    '''
     return data
 
 
@@ -175,34 +181,17 @@ def small_quant(soup, data):
     return data
 
 
-def misc_boolean(soup, data):
-    script_tags = soup.find_all('script')
-
-    # TODO: This is inefficient...
-    for script in script_tags:
-        src = script.get('src')
-        if src:
-            data['embedded_js'] = True
-        else:
-            data['external_js'] = True
-
-    return data
-
-
 def get_htmls(company, base_path):
     # A HTML page is a "success" if all of these get filled out with some value...
     data = {
         'entityid': str(company['entityid']),
+        'yr_from_start': "",
         'capture_yr': None,
         'capture_m': None,
         'file_path': "",
         'file_exists': 1,
-        'is_429': 0,
-        'is_parsable': 1,
 
         'website_size_kb': 0,
-        'text_array': None,
-        'a_dict': None,
 
         'careers': 0,
         'blog': 0,
@@ -215,11 +204,9 @@ def get_htmls(company, base_path):
         'call_to_action': 0,
         'testimonial': 0,
 
-        'title': "",
-        'description': "",
-        'keywords': "",
-        'author': "",
-        'language': "",
+        'title': 0,
+        'description': 0,
+        'keywords': 0,
 
         'p_count': 0,
         'h_count': 0,
@@ -228,12 +215,10 @@ def get_htmls(company, base_path):
         'table_count': 0,
         'form_count': 0,
         'script_count': 0,
-
-        'embedded_js': 0,
-        'external_js': 0
     }
     global webpage_metadata
 
+    # Needed to calculate the year from start
     start_date = pd.to_datetime(company['startdate'])
 
     co_directory = os.path.join(base_path, data['entityid'])
@@ -248,9 +233,13 @@ def get_htmls(company, base_path):
             if os.path.isfile(index_path):
                 data['file_path'] = index_path
                 # Get time from start date (in months)
-                data['time_from_start_m'] = 12 * \
-                    (int(year) - start_date.year) + \
-                    (int(month) - start_date.month)
+                yr_from_start = (int(year) - start_date.year) + \
+                    ((int(month) - start_date.month) / 12)
+                try:
+                    data['yr_from_start'] = round(yr_from_start)
+                except ValueError:
+                    pdb.set_trace()
+
                 # Get file size (kb)
                 data['website_size_kb'] = os.stat(
                     index_path).st_size / 1024
@@ -261,11 +250,9 @@ def get_htmls(company, base_path):
                     try:
                         soup = BeautifulSoup(html_content, 'html.parser')
                     except UnboundLocalError:
-                        data['is_parsable'] = 0
                         continue
                     soup_str = soup.get_text()
                     if soup_str == errortxt_429:
-                        data['is_429'] = 1
                         continue
 
                     # Parse HTML, produce more variables
@@ -273,9 +260,9 @@ def get_htmls(company, base_path):
                     data = add_big(soup, data)
                     data = small_qualitative(soup, data)
                     data = small_quant(soup, data)
-                    data = misc_boolean(soup, data)
             else:
-                data['file_exists'] = 0
+                # File doesn't exist
+                continue
             # Append data
             webpage_metadata = webpage_metadata.append(data, ignore_index=True)
 
@@ -292,9 +279,5 @@ for index, row in url_list.iterrows():
 
 webpage_metadata = webpage_metadata.sort_values(
     by=['entityid', 'capture_yr', 'capture_m'])
-
-# FINAL STEP
-# TODO: Fix this bug
-# webpage_metadata = pd.merge(webpage_metadata, url_list, on='entityid')
 
 webpage_metadata.to_csv(OUTPUT_PATH, index=False)

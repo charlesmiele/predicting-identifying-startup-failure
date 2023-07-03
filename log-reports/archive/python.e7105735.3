@@ -1,0 +1,56 @@
+Traceback (most recent call last):
+  File "/apps/anaconda3/lib/python3.9/site-packages/urllib3/response.py", line 438, in _error_catcher
+    yield
+  File "/apps/anaconda3/lib/python3.9/site-packages/urllib3/response.py", line 767, in read_chunked
+    chunk = self._handle_chunk(amt)
+  File "/apps/anaconda3/lib/python3.9/site-packages/urllib3/response.py", line 711, in _handle_chunk
+    value = self._fp._safe_read(amt)
+  File "/apps/anaconda3/lib/python3.9/http/client.py", line 625, in _safe_read
+    chunk = self.fp.read(min(amt, MAXAMOUNT))
+  File "/apps/anaconda3/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/apps/anaconda3/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/apps/anaconda3/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/models.py", line 758, in generate
+    for chunk in self.raw.stream(chunk_size, decode_content=True):
+  File "/apps/anaconda3/lib/python3.9/site-packages/urllib3/response.py", line 572, in stream
+    for line in self.read_chunked(amt, decode_content=decode_content):
+  File "/apps/anaconda3/lib/python3.9/site-packages/urllib3/response.py", line 793, in read_chunked
+    self._original_response.close()
+  File "/apps/anaconda3/lib/python3.9/contextlib.py", line 137, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/apps/anaconda3/lib/python3.9/site-packages/urllib3/response.py", line 455, in _error_catcher
+    raise ProtocolError("Connection broken: %r" % e, e)
+urllib3.exceptions.ProtocolError: ("Connection broken: ConnectionResetError(104, 'Connection reset by peer')", ConnectionResetError(104, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/user/cm4400/Documents/main/html_download.py", line 122, in <module>
+    response = requests.get(url, timeout=10)
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/sessions.py", line 677, in send
+    history = [resp for resp in gen]
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/sessions.py", line 677, in <listcomp>
+    history = [resp for resp in gen]
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/sessions.py", line 237, in resolve_redirects
+    resp = self.send(
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/sessions.py", line 697, in send
+    r.content
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/models.py", line 836, in content
+    self._content = b''.join(self.iter_content(CONTENT_CHUNK_SIZE)) or b''
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/models.py", line 761, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ("Connection broken: ConnectionResetError(104, 'Connection reset by peer')", ConnectionResetError(104, 'Connection reset by peer'))

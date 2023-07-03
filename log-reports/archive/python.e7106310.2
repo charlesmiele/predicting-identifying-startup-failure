@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/user/cm4400/Documents/main/html_download.py", line 122, in <module>
+    response = requests.get(url, timeout=10)
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/sessions.py", line 677, in send
+    history = [resp for resp in gen]
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/sessions.py", line 677, in <listcomp>
+    history = [resp for resp in gen]
+  File "/apps/anaconda3/lib/python3.9/site-packages/requests/sessions.py", line 166, in resolve_redirects
+    raise TooManyRedirects('Exceeded {} redirects.'.format(self.max_redirects), response=resp)
+requests.exceptions.TooManyRedirects: Exceeded 30 redirects.

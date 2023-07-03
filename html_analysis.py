@@ -108,7 +108,7 @@ def add_big(soup, data):
         href = a_tag.get('href')
         text = a_tag.text.strip(' */,.?!')
         for s in list(remaining_section_indicators):
-            if text in remaining_section_indicators[s]:
+            if text.lower() in remaining_section_indicators[s]:
                 data[s] = 1
                 del remaining_section_indicators[s]
         a_dict[href] = text

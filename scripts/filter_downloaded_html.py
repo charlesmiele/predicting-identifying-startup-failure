@@ -8,12 +8,26 @@ from bs4 import BeautifulSoup
 def main():
     errortxt_429 = "429 Too Many Requests\nYou have sent too many requests in a given amount of time.\n\n"
 
+    # TODO: Skipping this for now...this is harder than expected
+    '''
+    js_words = {'Date();', 's.createElement(o),', 's);', "_paq.push(['setTrackerUrl',", '{', '[];',
+                '})(window,', "'auto');", "'UA-36441709-1',", 'var', '(i[r].q', 's.getElementsByTagName(o)[0];',
+                'i[r].l', '(function', "_paq.push(['enableLinkTracking']);", '},', 'a.src', "'pageview');",
+                'd', '()', 'a', 's.parentNode.insertBefore(g,', '=', 'm.parentNode.insertBefore(a,', 'document,',
+                "'ga');", "'piwik.js';", 'a.async', "ga('create',", 'g.src', 'r;', '[]).push(arguments)',
+                '_paq', 'm)', 's', '||', 'i[r].q', 'const', "_paq.push(['setSiteId',", '1]);',
+                "i['GoogleAnalyticsObject']", 'g.type', "d.getElementsByTagName('script')[0];", "'text/javascript';",
+                'g.defer', '})();', '1', "_paq.push(['trackPageView']);", "ga('send',", 'u', "'piwik.php']);",
+                '+', "d.createElement('script'),", "'script',", 'g;', 'g.async', 'i[r]'
+                }
+    '''
+
     i = int(os.getenv('SGE_TASK_ID'))
     range_i = int(os.getenv('SGE_TASK_LAST')) - \
         int(os.getenv('SGE_TASK_FIRST')) + 1
-    OUTPUT_PATH = f"../log-reports"
 
-    co_list = [f for f in os.listdir('../data/html') if not f.startswith('.')]
+    co_list = [f for f in os.listdir(
+        '../data/html') if not f.startswith('.')]
 
     # Create interval
     intervals = np.linspace(0, len(co_list), range_i + 1)
@@ -24,9 +38,6 @@ def main():
 
     missed_timestamps = pd.DataFrame(
         columns=['entityid', 'timestamp', 'notes'])
-
-    finished_cos = []
-    partially_finished = []
 
     for company in co_list:
         if co_list.index(company) % 100 == 0:
@@ -40,59 +51,51 @@ def main():
 
         company_directory = f"../data/html/{company}"
 
-        remaining_timestamps = timestamps.copy()
-
         for time in range(len(timestamps)):
             index_path = os.path.join(
                 company_directory, f"{years[time]}/{months[time]}/index.html")
+            data = {
+                'entityid': company,
+                'timestamp': timestamps[time],
+                'notes': ""
+            }
             if os.path.isfile(index_path):
                 with open(index_path, 'r') as file:
                     html_content = file.read()
-
                     file_size = int(os.stat(index_path).st_size / 1024)
                     if file_size == 0:
+                        data['notes'] = 'emptyFile'
                         missed_timestamps = missed_timestamps.append(
-                            {'entityid': company, 'timestamp': timestamps[time], 'notes': 'emptyFile'}, ignore_index=True
-                        )
+                            data, ignore_index=True)
                         continue
                     try:
                         soup = BeautifulSoup(html_content, 'html.parser')
                     except UnboundLocalError:
+                        data['notes'] = 'unparsable'
                         missed_timestamps = missed_timestamps.append(
-                            {'entityid': company, 'timestamp': timestamps[time], 'notes': 'unparsable'}, ignore_index=True
-                        )
+                            data, ignore_index=True)
                         continue
+                    body_tag = soup.body
+                    if body_tag:
+                        num_inside_body = len(body_tag.find_all())
+                        if num_inside_body < 5:
+                            data['notes'] = 'SmallBody'
+                            missed_timestamps = missed_timestamps.append(
+                                data, ignore_index=True)
+                            continue
                     soup_str = soup.get_text()
                     if soup_str == errortxt_429:
+                        data['notes'] = '429Error'
                         missed_timestamps = missed_timestamps.append(
-                            {'entityid': company, 'timestamp': timestamps[time], 'notes': '429Error'}, ignore_index=True
-                        )
+                            data, ignore_index=True)
                         continue
-                remaining_timestamps.remove(timestamps[time])
             else:
-                missed_timestamps = missed_timestamps.append(
-                    {'entityid': company, 'timestamp': timestamps[time], 'notes': 'missingFile'}, ignore_index=True
-                )
-
-        if len(remaining_timestamps) == 0:
-            finished_cos.append(int(company))
-        else:
-            partially_finished.append(len(remaining_timestamps))
-
-    # 1. How many companies have we downloaded, at-least partially?
-
-    # 3. How many companies are we still missing (completely)?
-
-    # 2. How many companies have we downloaded completely, in full?
-    finished_cos = pd.Series(finished_cos)
-    finished_cos.to_csv(
-        OUTPUT_PATH + f"/completely-finished/{i}.csv", index=False)
+                data['notes'] = 'MissingFile'
+            missed_timestamps = missed_timestamps.append(
+                data, ignore_index=True)
 
     # 4. How many companies have we downloaded partially?
-    missed_timestamps.to_csv(
-        OUTPUT_PATH + f"/missed-timestamps/{i}.csv", index=False)
-
-    return finished_cos
+    missed_timestamps.to_csv(f"/missed-timestamps/{i}.csv", index=False)
 
 
 if __name__ == "__main__":

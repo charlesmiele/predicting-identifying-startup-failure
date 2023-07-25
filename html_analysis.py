@@ -10,7 +10,7 @@ i = int(os.getenv('SGE_TASK_ID'))
 range_i = int(os.getenv('SGE_TASK_LAST')) - \
     int(os.getenv('SGE_TASK_FIRST')) + 1
 
-OUTPUT_PATH = f"data/analysis-3/{i}_revised_webpage_metadata.csv"
+OUTPUT_PATH = f"data/analysis/{i}_revised_webpage_metadata.csv"
 
 
 # Read data
@@ -53,16 +53,28 @@ columns = [
     'file_exists',
     'website_size_kb',
 
-    'careers',
-    'blog',
-    'login',
-    'contact',
-    'team',
-    'about',
-    'news',
-    'faq',
-    'call_to_action',
-    'testimonial',
+    'careers_link',
+    'blog_link',
+    'login_link',
+    'contact_link',
+    'team_link',
+    'about_link',
+    'news_link',
+    'faq_link',
+    'call_to_action_link',
+    'testimonial_link',
+
+    'careers_text',
+    'blog_text',
+    'login_text',
+    'contact_text',
+    'team_text',
+    'about_text',
+    'news_text',
+    'faq_text',
+    'call_to_action_text',
+    'testimonial_text',
+
 
     'title',
     'description',
@@ -78,7 +90,7 @@ columns = [
 ]
 webpage_metadata = pd.DataFrame(columns=columns)
 
-# These are used later in add_big()
+# These are used later in search_link_and_text()
 section_indicators = {
     'careers': ["job", "jobs", "career", "careers", "join our team", "join us", "employment opportunities", "career opportunities"],
     'blog': ["blog", "our blog", "latest articles", "blog posts", "news and updates", "insights", "insights and opinions"],
@@ -96,20 +108,29 @@ section_indicators = {
 errortxt_429 = "429 Too Many Requests\nYou have sent too many requests in a given amount of time.\n\n"
 
 
-def add_big(soup, data):
+def search_links_and_text(soup, data):
     global section_indicators
 
     remaining_section_indicators = section_indicators.copy()
 
     # Fill in any indicators
     a_tags = soup.find_all('a')
+    # Link text
     for a_tag in a_tags:
         href = a_tag.get('href')
         text = a_tag.text.strip(' */,.?!')
         for s in list(remaining_section_indicators):
             if text.lower() in remaining_section_indicators[s]:
-                data[s] = 1
+                data[s+'_link'] = 1
+                data[s+'_text'] = 1
                 del remaining_section_indicators[s]
+
+    visible_text = soup.get_text().strip().lower()
+
+    for s in list(remaining_section_indicators):
+        if visible_text in remaining_section_indicators[s]:
+            data[s+'_text'] = 1
+            del remaining_section_indicators[s]
 
     return data
 
@@ -190,16 +211,27 @@ def get_htmls(company, base_path):
 
         'website_size_kb': 0,
 
-        'careers': 0,
-        'blog': 0,
-        'login': 0,
-        'contact': 0,
-        'team': 0,
-        'about': 0,
-        'news': 0,
-        'faq': 0,
-        'call_to_action': 0,
-        'testimonial': 0,
+        'careers_link': 0,
+        'blog_link': 0,
+        'login_link': 0,
+        'contact_link': 0,
+        'team_link': 0,
+        'about_link': 0,
+        'news_link': 0,
+        'faq_link': 0,
+        'call_to_action_link': 0,
+        'testimonial_link': 0,
+
+        'careers_text': 0,
+        'blog_text': 0,
+        'login_text': 0,
+        'contact_text': 0,
+        'team_text': 0,
+        'about_text': 0,
+        'news_text': 0,
+        'faq_text': 0,
+        'call_to_action_text': 0,
+        'testimonial_text': 0,
 
         'title': 0,
         'description': 0,
@@ -253,7 +285,7 @@ def get_htmls(company, base_path):
                         continue
 
                     # Parse HTML, produce more variables
-                    data = add_big(soup, data)
+                    data = search_links_and_text(soup, data)
                     data = small_qualitative(soup, data)
                     data = small_quant(soup, data)
             else:

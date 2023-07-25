@@ -8,16 +8,22 @@ from bs4 import BeautifulSoup
 def main():
     errortxt_429 = "429 Too Many Requests\nYou have sent too many requests in a given amount of time.\n\n"
 
-    # TODO: Skipping this for now...this is harder than expected
-    # js_words = ['Date();', 's.createElement(o),', 's);', "_paq.push(['setTrackerUrl',",
-    #             '})(window,', "'auto');", "'UA-36441709-1',", '(i[r].q', 's.getElementsByTagName(o)[0];',
-    #             'i[r].l', '(function', "_paq.push(['enableLinkTracking']);", 'a.src', "'pageview');",
-    #             '()', 's.parentNode.insertBefore(g,', 'm.parentNode.insertBefore(a,',
-    #             "'ga');", "'piwik.js';", 'a.async', "ga('create',", 'g.src', 'r;', '[]).push(arguments)',
-    #             '_paq', 'i[r].q', 'const', "_paq.push(['setSiteId',", '1]);',
-    #             "i['GoogleAnalyticsObject']", 'g.type', "d.getElementsByTagName('script')[0];", "'text/javascript';",
-    #             'g.defer', '})();', "_paq.push(['trackPageView']);", "ga('send',", "'piwik.php']);",
-    #             "d.createElement('script'),", "'script',", 'g;', 'g.async', 'i[r]']
+    def detect_jsheavy(soup):
+        x = {
+            'p_count': ['p'],
+            'h_count': ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+            'img_count': ['img'],
+            'a_count': ['a'],
+        }
+
+        count = 0
+        script_sum = len(soup.find_all('script'))
+
+        for i in x:
+            for y in x[i]:
+                count += len(soup.find_all(y))
+
+        return (count < 2)
 
     co_list = [f for f in os.listdir(
         '../data/SubsetHTML') if not f.startswith('.')]
@@ -86,11 +92,9 @@ def main():
                         missed_timestamps = missed_timestamps.append(
                             data, ignore_index=True)
                         continue
-                    # Includes JavaScript in the visible text (suspect)
-                    txt_list = soup_str.strip().split()
-                    js_list = [i for i in txt_list if i in js_words]
-                    if js_list != []:
-                        data['notes'] = js_list
+                    # Includes a lot of JavaScript (suspect)
+                    if detect_jsheavy(soup):
+                        data['notes'] = 'JSHeavy'
                         missed_timestamps = missed_timestamps.append(
                             data, ignore_index=True)
                         continue

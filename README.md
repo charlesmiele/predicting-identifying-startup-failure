@@ -1,4 +1,6 @@
-# predicting-identifying-startup-failure
+The scripts in the base directory are the most important.
+
+`html_download.py` downloads the HTML files. `html_analysis.py` parses them.
 
 Code is written by [Charles Miele](https://www.charlesmiele.com). The Python scripts in the main directory are the most important ones.
 
